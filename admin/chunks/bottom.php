@@ -34,6 +34,10 @@ PER -->
 Scripts
 ================================================ -->
 <!-- jQuery Library -->
+
+<!--materialize js-->
+<script type="text/javascript" src="../assets/theme/js/materialize.min.js"></script>
+
 <!-- dataTables -->
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
@@ -41,8 +45,6 @@ Scripts
         $('.dataTable').DataTable();
     });
 </script>
-<!--materialize js-->
-<script type="text/javascript" src="../assets/theme/js/materialize.min.js"></script>
 <!--scrollbar-->
 <script type="text/javascript" src="../assets/theme/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
@@ -50,6 +52,7 @@ Scripts
 <!--custom-script.js - Add your own theme custom JS-->
 <script type="text/javascript" src="../assets/theme/js/custom-script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 </body>
 </html>

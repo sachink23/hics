@@ -29,7 +29,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 <html>
 <head>
 
-    <title>Hospital/Doctor's</title>
+    <title>Hospital/Doctor's Login</title>
 
     <!-- Meta Tags -->
 

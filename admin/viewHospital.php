@@ -34,7 +34,8 @@ if (isset($_GET["id"]) && strlen($_GET["id"]) == 36) {
                     <div class="row">
                         <div class="col s12">
                             <p style="font-size: 18px"><span
-                                    class="badge red white-text"><?= ucwords($hosp["ac_status"]) ?></span></p>
+                                        class="badge <?= $hosp["ac_status"] == "ACTIVE" ? "green" : "red" ?> white-text"><?= ucwords($hosp["ac_status"]) ?></span>
+                            </p>
                         </div>
                         <div class="col s12">
                             <p style="font-size: 16px;" title="<?= $hosp["hospital_name"] ?>" class="truncate"><strong>Hospital

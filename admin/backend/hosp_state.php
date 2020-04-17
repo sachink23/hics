@@ -4,7 +4,7 @@ if (!(isset($_GET["state"]) && isset($_GET["id"]))) {
     header("Location: ../dashboard.php");
     exit;
 }
-if (!($_GET["state"] == "activate" || $_GET["state"] == "deactivate" || $_GET["reject"])) {
+if (!($_GET["state"] == "activate" || $_GET["state"] == "deactivate" || $_GET["state"]) == "reject") {
     pageInfo("red", "Invalid Action");
     header("Location: ../dashboard.php");
     exit;

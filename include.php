@@ -40,3 +40,4 @@ function pageInfo($type, $content)
 	}
 
 	spl_autoload_register("autoloader");
+date_default_timezone_set('Asia/Kolkata');

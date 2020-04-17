@@ -48,7 +48,8 @@ catch (PDOException $e) {
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="../assets/theme/vendors/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet">
     <link href="../assets/theme/vendors/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
@@ -145,13 +146,13 @@ catch (PDOException $e) {
                         <li class="bold">
                             <a href="./requests.php" class="waves-effect waves-cyan">
                                 <i class="material-icons">plus_one</i>
-                                <span class="nav-text">New Reg Requests</span>
+                                <span class="nav-text">New Reg Requests (<?= $new_reg_req ?>) </span>
                             </a>
                         </li>
                         <li class="bold">
                             <a href="./hospitals.php" class="waves-effect waves-cyan">
                                 <i class="material-icons">local_hospital</i>
-                                <span class="nav-text">Registered Hospitals</span>
+                                <span class="nav-text">Active Hospitals</span>
                             </a>
                         </li>
                         <li class="bold">
