@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>
 
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css">
@@ -30,7 +30,8 @@
 <body>
 
 <nav class="red lighten-1" role="navigation">
-    <div class="nav-wrapper padding-horizontal"><a id="logo-container" href="./" class="brand-logo">HICS SYSTEM</a>
+    <div class="nav-wrapper padding-horizontal"><a id="logo-container" href="./" class="brand-logo">HICS <span
+                class="hide-on-small-and-down">SYSTEM</span></a>
 
         <ul class="right hide-on-med-and-down">
             <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
@@ -155,11 +156,13 @@
 
 
 <!--JavaScript at end of body for optimized loading-->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
 
 <script type="text/javascript" src="assets/js/theme.js"></script>
+<script src="assets/js/doctor-register.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
 
 </body>

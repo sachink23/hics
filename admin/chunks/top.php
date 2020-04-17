@@ -10,6 +10,16 @@ if (!$dep->loggedIn()) {
     exit;
 }
 $user = $dep->getUser();
+$db = new db;
+$con = $db->con();
+$new_reg_req = 0;
+try {
+    $q = $con->query("SELECT count(*) as req_count FROM hospitals WHERE ac_status = 'REQUESTED'");
+    $new_reg_req = $q->fetchAll(PDO::FETCH_ASSOC)[0]["req_count"];
+}
+catch (PDOException $e) {
+    pageInfo("red", "Database Error, Please Try After Some Time");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +48,11 @@ $user = $dep->getUser();
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="../assets/theme/vendors/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet">
     <link href="../assets/theme/vendors/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+
 </head>
 <body>
 <!-- Start Page Loading -->
@@ -114,7 +129,7 @@ $user = $dep->getUser();
                                 </li>
                             </ul>
                             <a class="btn-flat waves-effect waves-light white-text profile-btn"
-                               href="#"><?= $user["name"] ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
+                               href="./my-account.php"><?= $user["name"] ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <p class="user-roal">Admin</p>
                         </div>
                     </div>
@@ -178,3 +193,14 @@ $user = $dep->getUser();
         <section id="content">
             <!--start container-->
             <div class="container">
+                <?php if(isset($_SESSION["PAGE_INFO"])): ?>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card <?=$_SESSION["TYPE"] ?> lighten-1">
+                            <div class="card-content white-text">
+                                <p style="font-size: 18px"><?= $_SESSION["PAGE_INFO"] ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php clearPageInfo(); endif; ?>

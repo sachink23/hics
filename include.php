@@ -1,22 +1,28 @@
 <?php
 
-    define("APP_ROOT", __DIR__);
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 
-    define("APP_SALT", "SnvodOOmckdjfK");
+define("APP_ROOT", __DIR__);
 
-    require_once APP_ROOT."/db.php";
-    
-    session_start();
+define("APP_SALT", "SnvodOOmckdjfK");
 
-    function hash_password($password) {
-        return hash_hmac("ripemd128", $password, APP_SALT);
-    }
+require_once APP_ROOT . "/db.php";
 
-    function pageInfo($type, $content) {
-        /*
-            $type is color
-            $content is message in that info
-        */
+session_start();
+
+function hash_password($password)
+{
+    return hash_hmac("ripemd128", $password, APP_SALT);
+}
+
+function pageInfo($type, $content)
+{
+    /*
+        $type is color
+        $content is message in that info
+    */
 
         $_SESSION["PAGE_INFO_EXISTS"] = TRUE;
         $_SESSION["TYPE"] = strtolower($type);

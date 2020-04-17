@@ -52,7 +52,7 @@
         require_once "include.php";
         $db = new db;
         $con = $db->con();
-        $q = $con->prepare("INSERT INTO hospitals (mobile_number, password, hospital_name, hospital_type, name_of_doctor, subdist, address, ac_status, reg_ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $q = $con->prepare("INSERT INTO hospitals (mobile_number, password, hospital_name, hospital_type, name_of_doctor, subdist, address, ac_status, uqid, reg_ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, UUID(),?)");
         try {
             $q->execute([
                 $mobile,
@@ -62,10 +62,10 @@
                 htmlentities(utf8_encode($doc_name)),
                 $subdist,
                 htmlentities(utf8_encode($address)),
-                "DEACTIVATED",
+                "REQUESTED",
                 $_SERVER["REMOTE_ADDR"]
             ]);
-            ret(200, ["error"=>"false", "message"=>"Registration Successful"]);
+            ret(200, ["error" => "false", "message" => "Registration Successful!"]);
         }
         catch (PDOException $e) {
             if($e->getCode() == 23000){

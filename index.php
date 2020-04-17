@@ -12,30 +12,32 @@
       <meta name="theme-color" content="#FF0000" />
 
         <!-- Opengraph Meta Tags -->
-      <meta property="og:type" content="website"/>
-      <meta property="og:title" content="HICS SYSTEM"/>
-      <meta property="og:description" content="जिल्हा आपत्ती व्यवस्थापन प्राधिकरण जिल्हाधिकारी कार्यालय परभणी"/>
-      <meta property="og:image" content="./assets/logo/ndma.png"/>
-      
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="HICS SYSTEM"/>
+        <meta property="og:description" content="जिल्हा आपत्ती व्यवस्थापन प्राधिकरण जिल्हाधिकारी कार्यालय परभणी"/>
+        <meta property="og:image" content="./assets/logo/ndma.png"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"
+              media="screen,projection"/>
 
         <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
-      <link rel="stylesheet" href="assets/css/theme.css">
+        <link rel="stylesheet" href="assets/css/theme.css">
 
     </head>
 
     <body>
 
-	  <nav class="red lighten-1" role="navigation">
-	    <div class="nav-wrapper padding-horizontal"><a id="logo-container" href="./" class="brand-logo">HICS SYSTEM</a>
-	      
-	      <ul class="right hide-on-med-and-down">
-	        <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
-	      </ul>
+    <nav class="red lighten-1" role="navigation">
+        <div class="nav-wrapper padding-horizontal"><a id="logo-container" href="./" class="brand-logo">HICS <span
+                    class="hide-on-small-and-down">SYSTEM</span></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
+            </ul>
 
             <ul class="right hide-on-med-and-down">
                 <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
@@ -44,8 +46,8 @@
             <ul class="right hide-on-med-and-down">
                 <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
             </ul>
-	      <ul class="right hide-on-med-and-down">
-	        <li><a class="font-nav-bar" href="./">Homepage</a></li>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="font-nav-bar" href="./">Homepage</a></li>
 	      </ul>
 		
 	      <ul id="nav-mobile" class="sidenav">
