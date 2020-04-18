@@ -1,7 +1,62 @@
 <?php
 $title = "Hospital/Doctor's Dashboard";
 require_once "chunks/top.php";
-
 ?>
+    <div class="container">
+    <div class="row padding-2" style="margin-top: 20px">
+        <form action="backend/reporting-form.php">
+            <div class="col s12 z-depth-1 padding-2 margin-card">
+                <h5 class="pink-text">Daily Reporting Form</h5>
+                <h6 style="text-transform: capitalize">Information about patients in hospital</h6>
+            </div>
+            <div class="col s12 padding-2 z-depth-1 margin-card">
+                <div class="reporting-form-field">
+                    <label class="lg-label" for="date">Date <sup>*</sup></label>
+                    <input type="text" id="date" name="date" value="<?= date('Y-m-d', time()) ?>" required
+                           class="datepicker reporting-form-input">
+                </div>
+            </div>
+            <div class="col s12 padding-2 z-depth-1 margin-card">
+                <div class="reporting-form-field">
+                    <label class="lg-label" for="no_opd">Number of patients attended in OPD (Including Emergencies &
+                        Night Calls) <sup>*</sup></label>
+                    <input type="number" id="no_opd" placeholder="OPD Patients" name="no_opd" min="0" max="1000"
+                           required class="validate reporting-form-input">
+                </div>
+            </div>
+            <div class="col s12 padding-2 z-depth-1 margin-card">
+                <div class="reporting-form-field">
+                    <label class="lg-label" for="no_ipd">Total IPD Patients (Remaining) <sup>*</sup></label>
+                    <input type="number" id="no_ipd" placeholder="If Not Applicable Use 0" name="no_ipd" min="0"
+                           max="1000" required class="validate reporting-form-input">
+                </div>
+            </div>
+            <div class="col s12 padding-2 z-depth-1 margin-card">
+                <div class="reporting-form-field">
+                    <label class="lg-label" for="no_surge">No. of Major + Minor Surgeries + Deliveries (For Surgical &
+                        OBGY Braches)
+                        <sup>*</sup></label>
+                    <input type="number" id="no_surge" placeholder="If Not Applicable Use 0" name="no_surge" min="0"
+                           max="1000" required class="validate reporting-form-input">
+
+                </div>
+            </div>
+
+            <div class="col s12 padding-2 z-depth-1 margin-card">
+                <div class="reporting-form-field">
+                    <label class="lg-label" for="no_surge">Number Of Patients referred to District COVID
+                        facility<sup>*</sup></label>
+                    <input type="number" id="no_surge" placeholder="If Not Applicable Use 0" name="no_surge" min="0"
+                           max="1000" required class="validate reporting-form-input">
+                </div>
+            </div>
+            <div class="col s12 padding-2 z-depth-1 margin-card">
+                <button type="submit" style="margin: 3px" class="right btn btn-large waves-effect indigo">Submit
+                </button>
+                <button type="reset" style="margin: 3px" class="right btn btn-large waves-effect red">Reset</button>
+            </div>
+        </form>
+
+    </div>
 <?php
 require_once "chunks/bottom.php";
