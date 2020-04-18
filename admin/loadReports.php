@@ -78,8 +78,7 @@ if ($err == 0):
                     foreach ($rows as $row): ?>
                         <tr>
                             <td><?= $i++ ?></td>
-                            <td><strong><?= $row["hospital_name"] ?></strong><br/>(<?= $row["hospital_type"] ?>
-                                )<br/><strong>Dr. <?= $row["name_of_doctor"] ?></strong><br/>Mob. <?= $row["mobile_number"] ?>
+                            <td><strong><?= $row["hospital_name"] ?></strong><br/>(<?= $row["hospital_type"] ?>)<br/><strong> Dr. <?= $row["name_of_doctor"] ?></strong><br/> Mob. <?= $row["mobile_number"] ?>
                             </td>
                             <td><?= $row["subdist"] ?></td>
 
