@@ -2,13 +2,16 @@
 
 require_once "../include.php";
 
-$hosp = new department();
+$hosp = new hospital();
 
-if(!$hosp->loggedIn()) {
+if (!$hosp->loggedIn()) {
     pageInfo("red", "Login First!");
     header("Location: ./");
     exit;
 }
+$user = $hosp->getUser();
+$db = new db;
+$con = $db->con();
 
 ?>
 <!DOCTYPE html>
@@ -24,17 +27,12 @@ if(!$hosp->loggedIn()) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>Materialize - Material Design Admin Template</title>
-    <!-- Favicons-->
-    <link rel="icon" href="../assets/theme/images/favicon/favicon-32x32.png" sizes="32x32">
-    <!-- Favicons-->
-    <link rel="apple-touch-icon-precomposed" href="../assets/theme/images/favicon/apple-touch-icon-152x152.png">
-    <!-- For iPhone -->
+    <meta name="description"
+          content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+    <meta name="keywords"
+          content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <title><?= $title ?></title>
     <meta name="msapplication-TileColor" content="#00bcd4">
-    <meta name="msapplication-TileImage" content="../assets/theme/images/favicon/mstile-144x144.png">
-    <!-- For Windows Phone -->
     <!-- CORE CSS-->
     <link href="../assets/theme/css/materialize.css" type="text/css" rel="stylesheet">
     <link href="../assets/theme/css/style.css" type="text/css" rel="stylesheet">
@@ -43,6 +41,12 @@ if(!$hosp->loggedIn()) {
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="../assets/theme/vendors/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet">
     <link href="../assets/theme/vendors/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+
 </head>
 <body>
 <!-- Start Page Loading -->
@@ -64,7 +68,7 @@ if(!$hosp->loggedIn()) {
                         <h1 class="logo-wrapper">
                             <a href="./" class="brand-logo darken-1">
                                 <img src="../assets/logo/ndma.png" align="center" alt="Logo">
-                                <span class="logo-text hide-on-med-and-down">Admin Dashboard</span>
+                                <span class="logo-text hide-on-med-and-down">Doctor's Dashboard</span>
                             </a>
                         </h1>
                     </li>
@@ -76,36 +80,13 @@ if(!$hosp->loggedIn()) {
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
+                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button"
+                           data-activates="profile-dropdown">
                           <span class="avatar-status avatar-online">
                             <img src="../assets/theme/images/avatar/avatar-10.png" alt="avatar">
                             <i></i>
                           </span>
                         </a>
-                    </li>
-                </ul>
-                <!-- profile-dropdown -->
-                <ul id="profile-dropdown" class="dropdown-content">
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">face</i> Profile</a>
-                    </li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">settings</i> Settings</a>
-                    </li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">live_help</i> Help</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">lock_outline</i> Lock</a>
-                    </li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">keyboard_tab</i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -124,34 +105,21 @@ if(!$hosp->loggedIn()) {
             <ul id="slide-out" class="side-nav fixed leftside-navigation">
                 <li class="user-details cyan darken-2">
                     <div class="row">
-                        <div class="col col s4 m4 l4">
-                            <img src="../assets/theme/images/avatar/avatar-10.png" alt="" class="circle responsive-img valign profile-image cyan">
-                        </div>
-                        <div class="col col s8 m8 l8">
-                            <ul id="profile-dropdown-nav" class="dropdown-content">
+                        <div class="col s12">
+
+                            <!-- profile-dropdown -->
+                            <ul id="profile-dropdown" class="dropdown-content">
                                 <li>
-                                    <a href="#" class="grey-text text-darken-1">
-                                        <i class="material-icons">face</i> Profile</a>
+                                    <a href="my-account.php" class="grey-text text-darken-1">
+                                        <i class="material-icons">face</i> My Account</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="grey-text text-darken-1">
-                                        <i class="material-icons">settings</i> Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="grey-text text-darken-1">
-                                        <i class="material-icons">live_help</i> Help</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#" class="grey-text text-darken-1">
-                                        <i class="material-icons">lock_outline</i> Lock</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="grey-text text-darken-1">
+                                    <a href="../logout.php" class="grey-text text-darken-1">
                                         <i class="material-icons">keyboard_tab</i> Logout</a>
                                 </li>
                             </ul>
-                            <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <a class="btn-flat waves-effect waves-light white-text profile-btn"
+                               href="./my-account.php">Dr. <?= $user["name_of_doctor"] ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <p class="user-roal">Doctor</p>
                         </div>
                     </div>
@@ -159,57 +127,34 @@ if(!$hosp->loggedIn()) {
                 <li class="no-padding">
                     <ul class="collapsible" data-collapsible="accordion">
                         <li class="bold">
-                            <a href="index.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">pie_chart_outlined</i>
+                            <a href="./dashboard.php" class="waves-effect waves-cyan">
+                                <i class="material-icons">dashboard</i>
                                 <span class="nav-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="bold">
-                            <a href="cards-basic.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">cast</i>
-                                <span class="nav-text">Cards</span>
+                            <a href="./reports.php" class="waves-effect waves-cyan">
+                                <i class="material-icons">insert_chart_outlined</i>
+                                <span class="nav-text">Reports</span>
                             </a>
                         </li>
                         <li class="bold">
-                            <a href="ui-basic-buttons.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">insert_link</i>
-                                <span class="nav-text">Buttons</span>
+                            <a href="./my-account.php" class="waves-effect waves-cyan">
+                                <i class="material-icons">person</i>
+                                <span class="nav-text">My Account</span>
                             </a>
                         </li>
                         <li class="bold">
-                            <a href="form-layouts.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">format_color_text</i>
-                                <span class="nav-text">Forms</span>
-                            </a>
-                        </li>
-                        <li class="bold">
-                            <a href="css-typography.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">format_size</i>
-                                <span class="nav-text">Typography</span>
-                            </a>
-                        </li>
-                        <li class="bold">
-                            <a href="css-color.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">invert_colors</i>
-                                <span class="nav-text">Color</span>
-                            </a>
-                        </li>
-                        <li class="bold">
-                            <a href="table-basic.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">border_all</i>
-                                <span class="nav-text">Table</span>
-                            </a>
-                        </li>
-                        <li class="bold">
-                            <a href="ui-icons.html" class="waves-effect waves-cyan">
-                                <i class="material-icons">lightbulb_outline</i>
-                                <span class="nav-text">Icons</span>
+                            <a href="../logout.php" class="waves-effect waves-cyan">
+                                <i class="material-icons">keyboard_tab</i>
+                                <span class="nav-text">Logout</span>
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only">
+            <a href="#" data-activates="slide-out"
+               class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only">
                 <i class="material-icons">menu</i>
             </a>
         </aside>
@@ -219,3 +164,14 @@ if(!$hosp->loggedIn()) {
         <section id="content">
             <!--start container-->
             <div class="container">
+                <?php if(isset($_SESSION["PAGE_INFO"])): ?>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card <?=$_SESSION["TYPE"] ?> lighten-1">
+                            <div class="card-content white-text">
+                                <p style="font-size: 18px"><?= $_SESSION["PAGE_INFO"] ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php clearPageInfo(); endif; ?>

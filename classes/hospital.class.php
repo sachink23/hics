@@ -28,8 +28,8 @@ class hospital
         if (count($users) == 1) {
             if ($users[0]["ac_status"] == "ACTIVE") {
                 $_SESSION["user_type"] = "HOSP";
-                $_SESSION["id"] = $users[0]["id"];
-                $_SESSION["username"] = $users[0]["mobile"];
+                $_SESSION["id"] = $users[0]["hospital_id"];
+                $_SESSION["username"] = $users[0]["mobile_number"];
                 $this->user = $users[0];
                 return true;
             } else {
@@ -66,8 +66,8 @@ class hospital
             if (count($users) == 1) {
                 if ($users[0]["ac_status"] == "ACTIVE") {
                     $_SESSION["user_type"] = "HOSP";
-                    $_SESSION["id"] = $users[0]["id"];
-                    $_SESSION["username"] = $users[0]["mobile"];
+                    $_SESSION["id"] = $users[0]["hospital_id"];
+                    $_SESSION["username"] = $users[0]["mobile_number"];
                     $this->user = $users[0];
                     return true;
                 } else {
@@ -96,4 +96,3 @@ class hospital
 
 }
 
-;
