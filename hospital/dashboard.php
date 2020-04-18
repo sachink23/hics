@@ -64,7 +64,7 @@ require_once "chunks/top.php";
                 title: "Report For <?= date('d/m/Y', time())",
                 icon: "info",
                 html: `
-                    <table border="1px" align="center">
+                    <table class="centered highlight">
                         <tr>
                             <th>OPD Patients</th>
                             <td>`+document.getElementById("no_opd").value+`</td>

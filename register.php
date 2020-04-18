@@ -15,7 +15,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="HICS SYSTEM"/>
     <meta property="og:description" content="जिल्हा आपत्ती व्यवस्थापन प्राधिकरण जिल्हाधिकारी कार्यालय परभणी"/>
-    <meta property="og:image" content="./assets/logo/ndma.png"/>
+    <meta property="og:image" content="assets/logo/ndma.png"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
