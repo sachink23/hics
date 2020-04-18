@@ -61,7 +61,7 @@ require_once "chunks/top.php";
     <script>
         async function validateForm() {
             var conf = await Swal.fire({
-                title: "Report For <?= date('d/m/Y', time())",
+                title: "Report For <?= date('d/m/Y', time()) ?>",
                 icon: "info",
                 html: `
                     <table class="centered highlight">
