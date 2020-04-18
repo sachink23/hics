@@ -4,7 +4,7 @@ require_once "chunks/top.php";
 ?>
     <div class="container">
     <div class="row padding-2" style="margin-top: 10px">
-        <form action="backend/reporting-form.php" onsubmit="return validateForm()" method="post">
+        <form action="backend/reporting-form.php" id="_form" method="post">
             <div class="col s12 z-depth-1 padding-2 margin-card">
                 <h5 class="pink-text">Daily Reporting Form</h5>
                 <h6 style="text-transform: capitalize">Information about patients in hospital</h6>
@@ -51,7 +51,7 @@ require_once "chunks/top.php";
                 </div>
             </div>
             <div class="col s12 padding-2 z-depth-1 margin-card">
-                <button type="submit" style="margin: 3px" class="right btn btn-large waves-effect indigo">Submit
+                <button type="button" onclick="confirmForm()" style="margin: 3px" class="right btn btn-large waves-effect indigo">Submit
                 </button>
                 <button type="reset" style="margin: 3px" class="right btn btn-large waves-effect red">Reset</button>
             </div>
@@ -59,7 +59,7 @@ require_once "chunks/top.php";
 
     </div>
     <script>
-        async function validateForm() {
+        async function confirmForm() {
             var conf = await Swal.fire({
                 title: "Report For <?= date('d/m/Y', time()) ?>",
                 icon: "info",
@@ -85,7 +85,7 @@ require_once "chunks/top.php";
                 `
             });
             if(conf.value) {
-                return true;
+                document.getElementById("_form").submit();
             }
             return false;
         }
