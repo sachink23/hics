@@ -32,16 +32,19 @@
 <nav class="red lighten-1" role="navigation">
     <div class="nav-wrapper padding-horizontal"><a id="logo-container" href="./" class="brand-logo">HICS <span
                 class="hide-on-small-and-down">SYSTEM</span></a>
-
+        <?php if(isset($_SESSION["user_type"])): ?>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="font-nav-bar" href="./logout">Logout</a></li>
+        </ul>
+        <?php endif; ?>
         <ul class="right hide-on-med-and-down">
             <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
-        </ul>
-
-        <ul class="right hide-on-med-and-down">
             <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
             <li><a class="font-nav-bar" href="./">Homepage</a></li>
@@ -53,7 +56,9 @@
             <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
             <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
             <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
-
+        <?php if(isset($_SESSION["user_type"])): ?>
+            <li><a class="font-nav-bar" href="./logout">Logout</a></li>
+        <?php endif; ?>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
