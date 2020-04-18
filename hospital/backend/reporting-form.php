@@ -18,11 +18,8 @@ if (
     $ipd = filter_var($_POST["no_ipd"], FILTER_VALIDATE_INT);
     $surge = filter_var($_POST["no_surge"], FILTER_VALIDATE_INT);
     $cov = filter_var($_POST["no_cov"], FILTER_VALIDATE_INT);
-    if(filter_var($opd, FILTER_VALIDATE_INT) === 0) {
-            
-    }
-    else {
-        if (!$opd || ($opd < 0 || $opd > 1000)) {
+    if(!(filter_var($opd, FILTER_VALIDATE_INT) === 0)) {
+         if (!$opd || ($opd < 0 || $opd > 1000)) {
         
             pageInfo("red", "Please Enter Valid Number Of OPD Patients!");
             header("Location: ../dashboard.php");
