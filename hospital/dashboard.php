@@ -61,24 +61,26 @@ require_once "chunks/top.php";
     <script>
         async function confirmForm() {
             var conf = await Swal.fire({
-                title: "Report For <?= date('d/m/Y', time()) ?>",
+                title: "Confirm Report For <?= date('d/m/Y', time()) ?>",
                 icon: "info",
+                showCancelButton:true,
+                confirmButtonText:"Yes, I Confirm!",
                 html: `
                     <table class="centered highlight">
                         <tr>
-                            <th>OPD Patients</th>
+                            <td>OPD Patients</td>
                             <td>`+document.getElementById("no_opd").value+`</td>
                         </tr>
                         <tr>
-                            <th>IPD Patients</th>
+                            <td>IPD Patients</td>
                             <td>`+document.getElementById("no_ipd").value+`</td>
                         </tr>
                         <tr>
-                            <th>Surgeries/Deliveries</th>
+                            <td>Surgeries/Deliveries</td>
                             <td>`+document.getElementById("no_surge").value+`</td>
                         </tr>
                         <tr>
-                            <th>Covid Referred</th>
+                            <td>Covid Referred</td>
                             <td>`+document.getElementById("no_cov").value+`</td>
                         </tr>
                     </table>
