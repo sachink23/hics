@@ -1,15 +1,8 @@
 <?php
 $title = "Admin Dashboard";
-$rf = "2020-04-01";
+$rf = "2020-04-15";
 $rt = date("Y-m-d");
-if (isset($_GET["reports_from"]) && isset($_GET["reports_to"])) {
-    $rf = $_GET["reports_from"];
-    $rt = $_GET["reports_to"];
-    if ($rf > $rt) {
-        $err++;
-        pageInfo("red", "Invalid Date Range Selected, Showing Default Reports");
-    }
-}
+
 require_once "chunks/top.php";
 
 ?>
@@ -61,6 +54,7 @@ require_once "chunks/top.php";
                 Swal.fire({icon: "warning", title: "From date can't be greater than To date!!"})
                 return false;
             }
+            let subdist = document.getElementById("subdist").value;
             if (!(subdist == "ALL" || subdist == "Parbhani (City)" || subdist == "Parbhani" || subdist == "Jintur" || subdist == "Pathri" || subdist == "Manwath" || subdist == "Purna" || subdist == "Selu" || subdist == "Sonpeth" || subdist == "Palam" || subdist == "Gangakhed")) {
                 Swal.fire({
                     title: `Please Select Valid Taluka`,

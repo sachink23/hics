@@ -14,6 +14,7 @@ th, td {
 }
 
 .margin-card {
+    background: white;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 13px;

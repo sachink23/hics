@@ -1,6 +1,6 @@
 <?php
 $title = "Admin Dashboard";
-$rf = "2020-04-01";
+$rf = "2020-04-15";
 $rt = date("Y-m-d");
 if (isset($_GET["reports_from"]) && isset($_GET["reports_to"])) {
     $rf = $_GET["reports_from"];
@@ -158,17 +158,18 @@ if ($err == 0):
                         </div>
                     </div>
                 </form>
-                <table class="centered highlight responsive-table">
-                    <thead>
-                    <tr>
-                        <th>Sr. <br/>No.</th>
-                        <th>Taluka Name</th>
-                        <th>Active Hospitals<br/> <small>(No effect of Date)</small></th>
-                        <th>Total OPDs</th>
-                        <th>IPDs <br>(Remaining)</th>
-                        <th>Surgeries /<br/>Deliveries</th>
-                        <th title="Patients Referred to District Covid Facility">Total Patients <br/>Referred to
-                            District<br/> Covid Facility
+                <div style="overflow-y: scroll">
+                    <table class="centered highlight">
+                        <thead>
+                        <tr>
+                            <th>Sr. <br/>No.</th>
+                            <th>Taluka Name</th>
+                            <th>Active Hospitals<br/> <small>(No effect of Date)</small></th>
+                            <th>Total OPDs</th>
+                            <th>IPDs <br>(Remaining)</th>
+                            <th>Surgeries /<br/>Deliveries</th>
+                            <th title="Patients Referred to District Covid Facility">Total Patients <br/>Referred to
+                                District<br/> Covid Facility
                         </th>
                     </tr>
                     </thead>
@@ -208,7 +209,8 @@ if ($err == 0):
                         <td><strong><?= $total_cov ?></strong></td>
                     </tr>
                     </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

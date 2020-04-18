@@ -34,10 +34,6 @@ catch (PDOException $e) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="description"
-          content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-    <meta name="keywords"
-          content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
     <title><?= $title ?></title>
     <meta name="msapplication-TileColor" content="#00bcd4">
     <!-- CORE CSS-->
@@ -112,11 +108,7 @@ catch (PDOException $e) {
             <ul id="slide-out" class="side-nav fixed leftside-navigation">
                 <li class="user-details cyan darken-2">
                     <div class="row">
-                        <div class="col col s4 m4 l4">
-                            <img src="../assets/theme/images/avatar/avatar-10.png" alt=""
-                                 class="circle responsive-img valign profile-image cyan">
-                        </div>
-                        <div class="col col s8 m8 l8">
+                        <div class="col s12">
 
                             <!-- profile-dropdown -->
                             <ul id="profile-dropdown" class="dropdown-content">

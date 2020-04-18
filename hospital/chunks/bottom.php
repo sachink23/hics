@@ -14,9 +14,6 @@
 </section>
 <!-- END CONTENT -->
 </div>
-<!-- dataTables -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script><!-- END WRAP
-PER -->
 </div>
 <!-- END MAIN -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
@@ -33,18 +30,31 @@ PER -->
 <!-- ================================================
 Scripts
 ================================================ -->
-<!-- jQuery Library -->
-
+<!-- Datatables Library -->
+<!-- dataTables -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".dataTable").DataTable({
+            paging: false,
+            dom: 'Bfrtip',
+            buttons: [
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
 <!--materialize js-->
 <script type="text/javascript" src="../assets/theme/js/materialize.min.js"></script>
 
-<!-- dataTables -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.dataTable').DataTable();
-    });
-</script>
+
 <!--scrollbar-->
 <script type="text/javascript" src="../assets/theme/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->

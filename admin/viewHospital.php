@@ -22,6 +22,15 @@ if (isset($_GET["id"]) && strlen($_GET["id"]) == 36) {
     $err++;
     pageInfo("red", "Invalid Hospital Selected!");
 }
+try {
+    $q = $con->prepare("SELECT * FROM reporting WHERE hospital_id = ?");
+    $q->execute([$hosp["hospital_id"]]);
+
+    $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    pageInfo("red", "Database Error Occurred, Please Try Again");
+    $err++;
+}
 
 ?>
     <div class="row" style="margin-top: 10px; padding: 3px">
@@ -87,6 +96,40 @@ if (isset($_GET["id"]) && strlen($_GET["id"]) == 36) {
                 </div>
             </div>
             <script src="../assets/js/view-hopital.js"></script>
+            <div class="container">
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col s12 z-depth-3" style="margin-top: 10px; min-height: 400px">
+                        <h5 class="teal-text">Reports : <?= $hosp["hospital_name"] ?></h5>
+                        <div style="padding: 10px;  overflow-y: scroll">
+                            <table class="centered highlight dataTable" style="border: 1px solid black">
+                                <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Date</th>
+                                    <th>Total OPDs</th>
+                                    <th>IPDs<br/>(Remaining)</th>
+                                    <th>Surgeries / Deliveries</th>
+                                    <th>Total Patients<br/>Referred to District<br/>Covid Facility</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php $i = 1;
+                                foreach ($rows as $row): ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= date("d/m/Y", strtotime($row["rp_date"])) ?></td>
+                                        <td><?= $row["no_opd"] ?></td>
+                                        <td><?= $row["no_ipd"] ?></td>
+                                        <td><?= $row["no_surg"] ?></td>
+                                        <td><?= $row["no_cov"] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php endif; ?>
     </div>
 <?php

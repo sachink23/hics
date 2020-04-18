@@ -3,8 +3,8 @@ $title = "Hospital/Doctor's Dashboard";
 require_once "chunks/top.php";
 ?>
     <div class="container">
-    <div class="row padding-2" style="margin-top: 20px">
-        <form action="backend/reporting-form.php">
+    <div class="row padding-2" style="margin-top: 10px">
+        <form action="backend/reporting-form.php" method="post">
             <div class="col s12 z-depth-1 padding-2 margin-card">
                 <h5 class="pink-text">Daily Reporting Form</h5>
                 <h6 style="text-transform: capitalize">Information about patients in hospital</h6>
@@ -12,8 +12,8 @@ require_once "chunks/top.php";
             <div class="col s12 padding-2 z-depth-1 margin-card">
                 <div class="reporting-form-field">
                     <label class="lg-label" for="date">Date <sup>*</sup></label>
-                    <input type="text" id="date" name="date" value="<?= date('Y-m-d', time()) ?>" required
-                           class="datepicker reporting-form-input">
+                    <input type="date" id="date" readonly name="date" value="<?= date('Y-m-d', time()) ?>" required
+                           class="reporting-form-input">
                 </div>
             </div>
             <div class="col s12 padding-2 z-depth-1 margin-card">
@@ -44,9 +44,9 @@ require_once "chunks/top.php";
 
             <div class="col s12 padding-2 z-depth-1 margin-card">
                 <div class="reporting-form-field">
-                    <label class="lg-label" for="no_surge">Number Of Patients referred to District COVID
+                    <label class="lg-label" for="no_cov">Number Of Patients referred to District COVID
                         facility<sup>*</sup></label>
-                    <input type="number" id="no_surge" placeholder="If Not Applicable Use 0" name="no_surge" min="0"
+                    <input type="number" id="no_cov" placeholder="If Not Applicable Use 0" name="no_cov" min="0"
                            max="1000" required class="validate reporting-form-input">
                 </div>
             </div>
