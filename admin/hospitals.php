@@ -1,5 +1,5 @@
 <?php
-$title = "Admin Dashboard : Hospital/Doctor Registration Requests";
+$title = "Admin Dashboard : Active Hospitals";
 require_once "chunks/top.php";
 $err = 0;
 try {
@@ -12,13 +12,14 @@ try {
 ?>
 
 <div class="row" style="margin-top: 10px;">
-    <div class="col s12 z-depth-2">
-        <h5 class="teal-text">Active Hospitals/Doctors (<?= $new_reg_req; ?>)</h5>
-    </div>
+
     <?php
     if ($err == 0):
         $new_requests = $q->fetchAll(PDO::FETCH_ASSOC);
         ?>
+        <div class="col s12 z-depth-2">
+            <h5 class="teal-text">Active Hospitals/Doctors (<?= count($new_requests) ?>)</h5>
+        </div>
         <div class="col s12 z-depth-3" style="margin-top: 10px; min-height: 400px">
             <div style="padding: 10px;  overflow-y: scroll">
                 <table class="centered highlight dataTable" style="border: 1px solid black">

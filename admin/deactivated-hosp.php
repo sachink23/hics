@@ -1,5 +1,5 @@
 <?php
-$title = "Admin Dashboard : Hospital/Doctor Registration Requests";
+$title = "Admin Dashboard : Deactivated/Rejected Hospitals";
 require_once "chunks/top.php";
 $err = 0;
 try {

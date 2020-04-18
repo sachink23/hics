@@ -33,7 +33,6 @@ if (isset($_POST["reports_from"]) && isset($_POST["reports_to"]) && isset($_POST
 } else {
     pageInfo("red", "Fields Missing!");
     header("Location: ./reports.php");
-    exit;
 }
 require_once "chunks/top.php";
 $con = $db->con();
@@ -42,11 +41,14 @@ try {
     if ($_POST["subdist"] == "ALL") {
         $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE r.rp_date BETWEEN ? AND ?");
         $q->execute([$rf, $rt]);
+        $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+
     } else {
-        $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE h.subdist = ? AND r.rp_date BETWEEN ? AND ?");
-        $q->execute([$_POST["subdist"], $rt, $rf]);
+        $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE h.subdist = ? AND (r.rp_date BETWEEN ? AND ?)");
+        $q->execute([$_POST["subdist"], $rf, $rt]);
+        $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+
     }
-    $rows = $q->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     pageInfo("red", "Database Error Occurred, Please Try Again");
     $err++;

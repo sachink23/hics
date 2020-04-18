@@ -1,5 +1,5 @@
 <?php
-$title = "Admin Dashboard";
+$title = "Admin Dashboard: Reports";
 $rf = "2020-04-15";
 $rt = date("Y-m-d");
 
