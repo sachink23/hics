@@ -18,25 +18,38 @@ if (
     $ipd = filter_var($_POST["no_ipd"], FILTER_VALIDATE_INT);
     $surge = filter_var($_POST["no_surge"], FILTER_VALIDATE_INT);
     $cov = filter_var($_POST["no_cov"], FILTER_VALIDATE_INT);
-    if (!$opd || ($opd < 0 || $opd > 1000)) {
-        pageInfo("red", "Please Enter Valid Number Of OPD Patients!");
-        header("Location: ../dashboard.php");
-        exit;
+    if(filter_var($opd, FILTER_VALIDATE_INT) === 0) {
+            
     }
-    if (!$ipd || ($ipd < 0 || $ipd > 1000)) {
-        pageInfo("red", "Please Enter Valid Number Of IPD Patients!");
-        header("Location: ../dashboard.php");
-        exit;
+    else {
+        if (!$opd || ($opd < 0 || $opd > 1000)) {
+        
+            pageInfo("red", "Please Enter Valid Number Of OPD Patients!");
+            header("Location: ../dashboard.php");
+            exit;
+        }
     }
-    if (!$surge || ($surge < 0 || $surge > 1000)) {
-        pageInfo("red", "Please Enter Valid Number Of Surgeries!");
-        header("Location: ../dashboard.php");
-        exit;
+    if(!(filter_var($ipd, FILTER_VALIDATE_INT) === 0)) {
+        if (!$ipd || ($ipd < 0 || $ipd > 1000)) {
+            pageInfo("red", "Please Enter Valid Number Of IPD Patients!");
+            header("Location: ../dashboard.php");
+            exit;
+        }    
     }
-    if (!$cov || ($cov < 0 || $cov > 1000)) {
-        pageInfo("red", "Please Enter Valid Number Of Covid Patients Referred To District Covid Facility!");
-        header("Location: ../dashboard.php");
-        exit;
+    if(!(filter_var($surge, FILTER_VALIDATE_INT) === 0)) {
+        if (!$surge || ($surge < 0 || $surge > 1000)) {
+            pageInfo("red", "Please Enter Valid Number Of Surgeries!");
+            header("Location: ../dashboard.php");
+            exit;
+        }    
+    }
+    
+    if(!(filter_var($cov, FILTER_VALIDATE_INT) === 0)) {    
+        if (!$cov || ($cov < 0 || $cov > 1000)) {
+            pageInfo("red", "Please Enter Valid Number Of Covid Patients Referred To District Covid Facility!");
+            header("Location: ../dashboard.php");
+            exit;
+        }    
     }
     $db = new db();
     $con = $db->con();
