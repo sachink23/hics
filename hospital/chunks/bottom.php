@@ -18,7 +18,7 @@
 <!-- END MAIN -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START FOOTER -->
-<footer class="page-footer gradient-45deg-light-blue-cyan" style="margin-top: 20px">
+<footer class="page-footer gradient-45deg-light-blue-cyan">
     <div class="footer-copyright">
         <div class="container">
             <span class="right"> Designed and Developed by <a class="grey-text text-lighten-2"

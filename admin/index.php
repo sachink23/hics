@@ -69,7 +69,7 @@
                             </div>
                             <div class="col s12">
                                 <div class='input-field'>
-                                    <input class='validate' title="Please Enter Valid Username" style="text-transform: lowercase" type='text' minlength="3" maxlength="20" name='username' id='username' required/>
+                                    <input class='validate' title="Please Enter Valid Username" type='text' minlength="3" maxlength="20" name='username' id='username' required/>
                                     <label for='username'>Enter your Username</label>
                                 </div>
 
