@@ -145,12 +145,12 @@ if ($err == 0):
                             <p><strong>Select Report Range (Dates)</strong></p>
                         </div>
                         <div class="col s6 input-field">
-                            <input type="text" required class="datepicker" name="reports_from" id="reports_from">
+                            <input type="date" required name="reports_from" id="reports_from">
                             <label for="reports_from">From</label>
                         </div>
 
                         <div class="col s6 input-field">
-                            <input type="text" required class="datepicker" name="reports_to" id="reports_to">
+                            <input type="date" required name="reports_to" id="reports_to">
                             <label for="reports_to">To</label>
                         </div>
                         <div class="col s12" style="margin-bottom: 10px;">
