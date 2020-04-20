@@ -39,7 +39,7 @@
             ret400();
         }
         if($mobile) {
-            if($mobile < 6000000000 || $mobile > 9999999999) {
+            if($mobile < 100000000 || $mobile > 9999999999) {
                 ret400();
             }
         }

@@ -102,7 +102,7 @@
             </div>
             <div class="col s12 m4">
                 <div class="input-field">
-                    <input type="number" name="mobile" placeholder="Doctors Mobile" id="mobile" min="6000000000" max="9999999999" class="validate" required>
+                    <input type="number" name="mobile" placeholder="Doctors Mobile" id="mobile" min="100000000" max="9999999999" class="validate" required>
                     <label for="mobile">Mobile Number</label>
                 </div>
             </div>

@@ -106,7 +106,7 @@ if ($err == 0):
                     <div class="padding-4">
                         <div class="col s7 m7">
                             <i class="material-icons background-round mt-5">group_work</i>
-                            <p>IPD (Remaining)</p>
+                            <p>Total IPD</p>
                         </div>
                         <div class="col s5 m5 right-align">
                             <h5><?= $no_ipd ?></h5>

@@ -14,13 +14,25 @@ if (
     isset($_POST["no_surge"]) &&
     isset($_POST["no_cov"])
 ) {
+    $date = explode("-", $_POST["date"]);
     $opd = filter_var($_POST["no_opd"], FILTER_VALIDATE_INT);
     $ipd = filter_var($_POST["no_ipd"], FILTER_VALIDATE_INT);
     $surge = filter_var($_POST["no_surge"], FILTER_VALIDATE_INT);
     $cov = filter_var($_POST["no_cov"], FILTER_VALIDATE_INT);
+    if(checkdate($date[1], $date[2], $date[0])) {
+        if($_POST["date"] < "2020-03-01" || $_POST["date"] > date("Y-m-d", time())) {
+            pageInfo("red", "You can't report for ".date("d/m/Y",strtotime($_POST["date"])));
+            header("Location: ../dashboard.php");
+            exit;
+        } 
+    } 
+    else {
+        pageInfo("red", "Please Enter Valid Date!");
+        header("Location: ../dashboard.php");
+        exit;
+    }
     if(!(filter_var($opd, FILTER_VALIDATE_INT) === 0)) {
          if (!$opd || ($opd < 0 || $opd > 1000)) {
-        
             pageInfo("red", "Please Enter Valid Number Of OPD Patients!");
             header("Location: ../dashboard.php");
             exit;
@@ -55,7 +67,7 @@ if (
         $q->execute([$user["hospital_id"], date("Y-m-d", time())]);
         if ($q->rowCount() == 0) {
             $q = $con->prepare("INSERT INTO reporting (rp_date, no_opd, no_ipd, no_surg, no_cov, reg_ip, hospital_id, uqid) VALUES (?,?,?,?,?,?,?, uuid())");
-            $q->execute([date("Y-m-d"), $opd, $ipd, $surge, $cov, $_SERVER["REMOTE_ADDR"], $user["hospital_id"]]);
+            $q->execute([$_POST["date"], $opd, $ipd, $surge, $cov, $_SERVER["REMOTE_ADDR"], $user["hospital_id"]]);
             pageInfo("green", "Successfully Reported!");
             header("Location: ../");
             exit;

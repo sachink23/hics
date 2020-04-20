@@ -51,7 +51,7 @@ function registerFormSubmit() {
         });
         return false;
     }
-    if (mobile < 6000000000 || mobile > 9999999999) {
+    if (mobile < 100000000 || mobile > 9999999999) {
         Swal.fire({
             title: `Please Enter Valid Doctor's Mobile Number`,
             icon: `warning`

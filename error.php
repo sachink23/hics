@@ -61,7 +61,7 @@
                         Sorry for the inconvenience but we’re performing some maintenance at the moment.
                         we’ll be back online shortly!</p>
                     <p>
-                        — The Team</p>
+                        — Nic Team</p>
                 </div>
                 <div class="error-actions">
                     <a href="/" style="margin-top: 10px;" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-home">
