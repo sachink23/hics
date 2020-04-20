@@ -12,7 +12,7 @@ require_once "chunks/top.php";
             <div class="col s12 padding-2 z-depth-1 margin-card">
                 <div class="reporting-form-field">
                     <label class="lg-label" for="date">Date <sup>*</sup></label>
-                    <input type="date" id="date" readonly name="date" value="<?= date('Y-m-d', time()) ?>" required
+                    <input type="date" id="date" name="date" value="<?= date('Y-m-d', time()) ?>" required
                            class="reporting-form-input">
                 </div>
             </div>
