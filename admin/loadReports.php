@@ -39,7 +39,7 @@ $con = $db->con();
 $err = 0;
 try {
     if ($_POST["subdist"] == "ALL") {
-        $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE r.rp_date BETWEEN ? AND ?");
+        $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE r.rp_date BETWEEN ? AND ? ORDER BY rp_date DESC");
         $q->execute([$rf, $rt]);
         $rows = $q->fetchAll(PDO::FETCH_ASSOC);
 
@@ -63,14 +63,15 @@ if ($err == 0):
                 <table class="centered highlight dataTable" style="border: 1px solid black">
                     <thead>
                     <tr>
-                        <th>Sr<br/> No</th>
-                        <th>Hospital Name</th>
-                        <th>Taluka</th>
-                        <th>Date</th>
-                        <th>Total OPDs</th>
-                        <th>IPDs<br/>(Remaining)</th>
-                        <th>Surgeries /<br/>Deliveries</th>
-                        <th>Total Patients<br/>Referred to District<br/>Covid Facility</th>
+                        <th width="5%">Sr No</th>
+                        <th width="24%">Hospital Name</th>
+                        <th width="10%">Taluka</th>
+                        <th width="10%">Date</th>
+                        <th width="10%">Total OPDs</th>
+                        <th width="6%">IPDs<br/>(Remaining)</th>
+                        <th width="10%">Surgeries / Deliveries</th>
+                        <th width="15%">Total Patients Referred to District Covid Facility</th>
+                        <th width="10%">Reported On</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -87,6 +88,8 @@ if ($err == 0):
                             <td><?= $row["no_ipd"] ?></td>
                             <td><?= $row["no_surg"] ?></td>
                             <td><?= $row["no_cov"] ?></td>
+                            <td><?= date("d/m/y h:i:s A", strtotime($row["reported_on"])) ?></td>
+
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

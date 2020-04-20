@@ -4,7 +4,7 @@ require_once "chunks/top.php";
 $con = $db->con();
 $err = 0;
 try {
-    $q = $con->prepare("SELECT * FROM reporting WHERE hospital_id = ?");
+    $q = $con->prepare("SELECT * FROM reporting WHERE hospital_id = ? ORDER BY rp_date DESC");
     $q->execute([$user["hospital_id"]]);
 
     $rows = $q->fetchAll(PDO::FETCH_ASSOC);
@@ -24,9 +24,10 @@ if ($err == 0):
                         <th>Sr No</th>
                         <th>Date</th>
                         <th>Total OPDs</th>
-                        <th>IPDs<br/>(Remaining)</th>
+                        <th>IPDs (Remaining)</th>
                         <th>Surgeries / Deliveries</th>
-                        <th>Total Patients<br/>Referred to District<br/>Covid Facility</th>
+                        <th>Total Patients Referred to District Covid Facility</th>
+                        <th>Reported On</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,7 @@ if ($err == 0):
                             <td><?= $row["no_ipd"] ?></td>
                             <td><?= $row["no_surg"] ?></td>
                             <td><?= $row["no_cov"] ?></td>
+                            <td><?= date("d/m/y h:i:s A", strtotime($row["reported_on"])) ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
