@@ -1,5 +1,6 @@
 <?php
 $title = "Admin Dashboard : Active Hospitals";
+$sadmin = true;
 require_once "chunks/top.php";
 $err = 0;
 try {

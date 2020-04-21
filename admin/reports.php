@@ -38,6 +38,17 @@ require_once "chunks/top.php";
                     </select>
                     <label for="subdist">Taluka</label>
                 </div>
+                <div class="col s6 input-field">
+                    <select name="type_of_hosp" id="type_of_hosp" class="validate">
+                        <option value="ALL">ALL</option>
+                        <option value="ayurvedic">Ayurvedic</option>
+                        <option value="allopathy">Allopathy</option>
+                        <option value="homoeopathy">Homoeopathy</option>
+                        <option value="unani">Unani</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="type_of_hosp">Type of Hospital</label>
+                </div>
                 <div class="col s12" style="margin-bottom: 10px;">
                     <button type="submit" class="btn waves-effect indigo right">Generate Reports</button>
                 </div>

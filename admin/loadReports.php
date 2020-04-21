@@ -2,7 +2,7 @@
 $title = "Admin Dashboard : Reports";
 $rf = "2020-04-15";
 $rt = date("Y-m-d");
-if (isset($_POST["reports_from"]) && isset($_POST["reports_to"]) && isset($_POST["subdist"])) {
+if (isset($_POST["type_of_hosp"]) && isset($_POST["reports_from"]) && isset($_POST["reports_to"]) && isset($_POST["subdist"])) {
     $rf = $_POST["reports_from"];
     $rt = $_POST["reports_to"];
     if ($rf > $rt) {
@@ -30,6 +30,21 @@ if (isset($_POST["reports_from"]) && isset($_POST["reports_to"]) && isset($_POST
         header("Location: ./reports.php");
         exit;
     }
+    if (
+        $_POST["type_of_hosp"] == "ALL" ||
+        $_POST["type_of_hosp"] == "ayurvedic" ||
+        $_POST["type_of_hosp"] == "allopathy" ||
+        $_POST["type_of_hosp"] == "homoeopathy" ||
+        $_POST["type_of_hosp"] == "unani" ||
+        $_POST["type_of_hosp"] == "other"
+    ) {
+
+    } else {
+        pageInfo("red", "Please Select Valid Taluka!");
+        header("Location: ./reports.php");
+        exit;
+    }
+
 } else {
     pageInfo("red", "Fields Missing!");
     header("Location: ./reports.php");
@@ -39,18 +54,28 @@ $con = $db->con();
 $err = 0;
 try {
     if ($_POST["subdist"] == "ALL") {
-        $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE r.rp_date BETWEEN ? AND ? ORDER BY rp_date DESC");
-        $q->execute([$rf, $rt]);
+        if ($_POST["type_of_hosp"] == "ALL") {
+            $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE r.rp_date BETWEEN ? AND ? ORDER BY rp_date DESC");
+            $q->execute([$rf, $rt]);
+        } else {
+            $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE h.hospital_type LIKE ? AND r.rp_date BETWEEN ? AND ? ORDER BY rp_date DESC");
+            $q->execute(["%" . $_POST["type_of_hosp"] . "%", $rf, $rt]);
+        }
         $rows = $q->fetchAll(PDO::FETCH_ASSOC);
 
     } else {
-        $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE h.subdist = ? AND (r.rp_date BETWEEN ? AND ?)");
-        $q->execute([$_POST["subdist"], $rf, $rt]);
+        if ($_POST["type_of_hosp"] == "ALL") {
+            $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE h.subdist = ? AND (r.rp_date BETWEEN ? AND ?)");
+            $q->execute([$_POST["subdist"], $rf, $rt]);
+        } else {
+            $q = $con->prepare("SELECT r.*, h.* FROM reporting r JOIN hospitals h on r.hospital_id = h.hospital_id WHERE h.hospital_type LIKE ? AND h.subdist = ? AND (r.rp_date BETWEEN ? AND ?)");
+            $q->execute(["%" . $_POST["type_of_hosp"] . "%", $_POST["subdist"], $rf, $rt]);
+        }
         $rows = $q->fetchAll(PDO::FETCH_ASSOC);
 
     }
 } catch (PDOException $e) {
-    pageInfo("red", "Database Error Occurred, Please Try Again");
+    pageInfo("red", "Database Error Occurred, Please Try Again" . $e->getMessage());
     $err++;
 }
 if ($err == 0):

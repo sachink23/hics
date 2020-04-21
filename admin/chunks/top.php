@@ -1,7 +1,8 @@
 <?php
 
 require_once "../include.php";
-
+if(!isset($sadmin))
+    $sadmin = false;
 $dep = new department();
 
 if (!$dep->loggedIn()) {
@@ -9,7 +10,13 @@ if (!$dep->loggedIn()) {
     header("Location: ./");
     exit;
 }
+
 $user = $dep->getUser();
+if($sadmin && !$user["is_superadmin"]) {
+    pageInfo("red","You only have access to reports");
+    header("Location: ./dashboard.php");
+    exit;
+}
 $db = new db;
 $con = $db->con();
 $new_reg_req = 0;
@@ -135,6 +142,7 @@ catch (PDOException $e) {
                                 <span class="nav-text">Dashboard</span>
                             </a>
                         </li>
+                        <?php if ($user["is_superadmin"]): ?>
                         <li class="bold">
                             <a href="./requests.php" class="waves-effect waves-cyan">
                                 <i class="material-icons">plus_one</i>
@@ -153,7 +161,13 @@ catch (PDOException $e) {
                                 <span class="nav-text">Deactivated Hospitals</span>
                             </a>
                         </li>
-
+                        <li class="bold">
+                            <a href="./admin-management.php" class="waves-effect waves-cyan">
+                                <i class="material-icons">people</i>
+                                <span class="nav-text">Admin Management</span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                         <li class="bold">
                             <a href="./reports.php" class="waves-effect waves-cyan">
                                 <i class="material-icons">insert_chart_outlined</i>

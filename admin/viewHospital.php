@@ -1,5 +1,6 @@
 <?php
 $title = "Admin Dashboard : Hospital/Doctor Details";
+$sadmin = true;
 require_once "chunks/top.php";
 $err = 0;
 if (isset($_GET["id"]) && strlen($_GET["id"]) == 36) {
@@ -84,6 +85,10 @@ try {
                                 <button onclick="deactivate_hosp('<?= $hosp["uqid"] ?>')" style="margin: 3px"
                                         class="btn waves-effect red right">Deactivate
                                 </button>
+                                <button onclick="changePass()" style="margin: 3px"
+                                        class="btn waves-effect indigo right">Change Password
+                                </button>
+
                             <?php endif; ?>
                             <?php if ($hosp["ac_status"] == "REQUESTED"): ?>
                                 <button onclick="reject_hosp('<?= $hosp["uqid"] ?>')" style="margin: 3px"
@@ -132,5 +137,48 @@ try {
             </div>
         <?php endif; ?>
     </div>
+
+    <script>
+        function checkPass() {
+            if (document.getElementById("password").value != document.getElementById("password_con").value) {
+                document.getElementById("pass_error").innerHTML = "New Password and Confirmed Password Should Be Same!";
+                return false;
+            }
+
+            document.getElementById("pass_error").innerHTML = "";
+            return true;
+        }
+
+        function changePass() {
+            Swal.fire({
+                title: "Change Doctor's Password",
+                showConfirmButton: false,
+                html: `
+                    <form onsubmit="return checkPass()" action="backend/change-doc-password.php" method="post"
+          style="margin: 10px; padding: 15px;">
+        <p class="red-text" id="pass_error"></p><br />
+        <div class="input-field">
+            <input type="password" class="validate" required minlength="8" name="password"
+                   placeholder="Enter New Password" id="password">
+        </div>
+
+        <div class="input-field">
+            <input type="password" class="validate" required minlength="8" name="password_con"
+                   placeholder="Confirm New Password" id="password_con">
+        </div>
+        <div>
+            <input type="hidden" name="id" value="<?= $hosp['uqid'] ?>">
+            <button type="submit" class="btn waves-effect indigo right">Change Password</button>
+
+        </div>
+        <br/>
+        <br/>
+    </form>
+
+                `
+            })
+        }
+    </script>
+
 <?php
 require_once "chunks/bottom.php";

@@ -21,6 +21,11 @@ if (!$dep->loggedIn()) {
     header("Location: ../");
     exit;
 }
+if ($dep->getUser()["is_superadmin"] == 0) {
+    pageInfo("red", "You only have access to reports!");
+    header("Location: ../dashboard.php");
+    exit;
+}
 $db = new db();
 $con = $db->con();
 if ($_GET["state"] == "activate") {
