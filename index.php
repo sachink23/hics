@@ -73,8 +73,9 @@
       <br><br>
       <img src="./assets/logo/hics.png" class="responsive-img" alt="HICS Logo">
       <div class="row center">
-        <h4 class="header col s12 light">Hospital Information Collection System</h4>
+        <h4 class="header col s12 light">Hospital Information Collection System</h4><hr/>
         <div class="col s12 light">
+<h6>परभणी जिल्ह्यातील सर्व हॉस्पिटलची माहिती आणि त्यांच्या दैनंदिन अहावालासाठीची प्रणाली.</h6>
         </div>
         
       </div>
