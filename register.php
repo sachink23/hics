@@ -52,7 +52,7 @@
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-            <li class="padding-horizontal padding-vertical"><img src="./assets/logo/hics.png" width="100px"></li>
+            <li class="padding-horizontal padding-vertical"><img src="./assets/logo/hics.png" width="200px"></li>
             <li><a class="font-nav-bar" href="./">Homepage</a></li>
             <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
             <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
