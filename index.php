@@ -77,6 +77,18 @@
         <div class="col s12 light">
 <h6>परभणी जिल्ह्यातील सर्व हॉस्पिटलची माहिती आणि त्यांच्या दैनंदिन अहावालासाठीची प्रणाली.</h6>
         </div>
+        <div class="col s12">
+          <br />
+        </div>
+        <div class="col l4 m12">
+          <h5><a href="./hospital">Doctor's Login</a></h5>
+        </div>
+        <div class="col l4 m12">
+          <h5><a href="./register.php">Doctor's Registration</a></h5>
+        </div>
+        <div class="col l4 m12">
+          <h5><a href="./admin">Admin Login</a></h5>
+        </div>
         
       </div>
       <br><br>
