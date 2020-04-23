@@ -95,7 +95,7 @@
         </div>
 
         <div class="col s12 center">
-          <img align="center" src="assets/logo/ndma.png" alt="NDMA" class="m-2" width="80px">
+          <img align="center" src="assets/logo/hics.png"  class="m-2" width="80px">
               <img align="center" src="assets/logo/india-emblem.png" alt="India Emblem" class="m-2" width="80px">
               <img align="center" src="assets/logo/gom.png" class="m-2" alt="Goverment of Maharashtra" width="80px">
               <img align="center" src="assets/logo/nic-transparent.png" class="m-2" alt="NIC" width="100px">
