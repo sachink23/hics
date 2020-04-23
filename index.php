@@ -56,7 +56,7 @@
       </ul>
   
       <ul id="nav-mobile" class="sidenav">
-          <li class="padding-horizontal padding-vertical"><img src="./assets/logo/ndma.png" alt="NDMA" width="100px"></li>
+          <li class="padding-horizontal"><img src="./assets/logo/hics.png" alt="hics" width="200px"></li><br/>
         <li><a class="font-nav-bar" href="./">Homepage</a></li>
         <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
             <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="col s12 center">
-          <img align="center" src="assets/logo/hics.png"  class="m-2" width="80px">
+          <img align="center" src="assets/logo/ndma.png"  class="m-2" width="80px">
               <img align="center" src="assets/logo/india-emblem.png" alt="India Emblem" class="m-2" width="80px">
               <img align="center" src="assets/logo/gom.png" class="m-2" alt="Goverment of Maharashtra" width="80px">
               <img align="center" src="assets/logo/nic-transparent.png" class="m-2" alt="NIC" width="100px">
