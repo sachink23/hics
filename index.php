@@ -8,14 +8,14 @@
     <!-- Meta Tags -->
     
     <meta charset="utf-8">
-    <meta name="description" content="जिल्हा आपत्ती व्यवस्थापन प्राधिकरण जिल्हाधिकारी कार्यालय परभणी">
+    <meta name="description" content="Hospital Information Collection System">
     <meta name="author" content="Sachin Kekarjawalekar">
     <meta name="theme-color" content="#FF0000" />
 
       <!-- Opengraph Meta Tags -->
       <meta property="og:type" content="website"/>
       <meta property="og:title" content="HICS SYSTEM"/>
-      <meta property="og:description" content="जिल्हा आपत्ती व्यवस्थापन प्राधिकरण जिल्हाधिकारी कार्यालय परभणी"/>
+      <meta property="og:description" content="Hospital Information Collection System"/>
       <meta property="og:image" content="assets/logo/ndma.png"/>
 
       <!--Let browser know website is optimized for mobile-->
@@ -73,13 +73,11 @@
       <br><br>
       <img src="./assets/logo/hics.png" class="responsive-img" alt="HICS Logo">
       <div class="row center">
-        <h4 class="header col s12 light">जिल्हा आपत्ती व्यवस्थापन प्राधिकरण, जिल्हाधिकारी कार्यालय, परभणी</h4>
+        <h4 class="header col s12 light">Hospital Information Collection System</h4>
         <div class="col s12 light">
           <hr />
         </div>
-        <h5 class="header col s12 light">
-          Hospital Information Collection System
-        </h5>
+        
       </div>
       <br><br>
 
