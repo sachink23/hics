@@ -80,13 +80,13 @@
         <div class="col s12">
           <br />
         </div>
-        <div class="col l4 m12">
+        <div class="col l4 m12 center">
           <h5><a href="./hospital">Doctor's Login</a></h5>
         </div>
-        <div class="col l4 m12">
+        <div class="col l4 m12 center">
           <h5><a href="./register.php">Doctor's Registration</a></h5>
         </div>
-        <div class="col l4 m12">
+        <div class="col l4 m12 center">
           <h5><a href="./admin">Admin Login</a></h5>
         </div>
         
