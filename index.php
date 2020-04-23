@@ -71,7 +71,7 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container center">
       <br><br>
-      <img src="assets/logo/ndma.png" class="responsive-img" alt="NDMA Logo">
+      <img src="./assets/logo/hics.png" class="responsive-img" alt="HICS Logo">
       <div class="row center">
         <h4 class="header col s12 light">जिल्हा आपत्ती व्यवस्थापन प्राधिकरण, जिल्हाधिकारी कार्यालय, परभणी</h4>
         <div class="col s12 light">
