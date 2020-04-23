@@ -75,7 +75,6 @@
       <div class="row center">
         <h4 class="header col s12 light">Hospital Information Collection System</h4>
         <div class="col s12 light">
-          <hr />
         </div>
         
       </div>
