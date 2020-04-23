@@ -67,7 +67,7 @@ $con = $db->con();
                     <li>
                         <h1 class="logo-wrapper">
                             <a href="./" class="brand-logo darken-1">
-                                <img src="../assets/logo/ndma.png" align="center" alt="Logo">
+                                <img src="../assets/logo/hics.png" align="center" alt="Logo">
                                 <span class="logo-text hide-on-med-and-down">Doctor's Dashboard</span>
                             </a>
                         </h1>
