@@ -40,5 +40,9 @@ if (isset($_POST["query"])) {
         exit;
     }
 
+} else {
+    pageInfo("red", "Empty Query");
+    header("Location: ../query.php");
+    exit;
 }
 ?>

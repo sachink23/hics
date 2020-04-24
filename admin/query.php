@@ -7,11 +7,13 @@ require_once "chunks/top.php";
     <div class="container" style="margin-top: 20px">
         <form method="post" action="backend/q.php">
             <div class="row" style="margin-bottom: 22px;">
-                <button type="reset" class="btn waves-effect red left">Reset</button>
-                <button type="submit" class="btn waves-effect indigo right">Query</button>
+                <button type="reset" tabindex="3" class="btn waves-effect red left">Reset</button>
+                <button type="submit" tabindex="2" class="btn waves-effect indigo right">Query</button>
             </div>
             <div class="input-field">
-                <textarea name="query" <?= $_SESSION["Q"] ?? "" ?> class="materialize-textarea" id="query"></textarea>
+                <textarea tabindex="1"
+                          name="query" <?= isset($_SESSION["Q"]) ? $_SESSION["Q"] : "" ?> class="materialize-textarea"
+                          id="query"></textarea>
                 <label for="query">MySQL Query</label>
             </div>
 
@@ -41,6 +43,8 @@ require_once "chunks/top.php";
 
     </div>
 <?php
-unset($_SESSION["Q_DATA"]);
-unset($_SESSION["Q"]);
+if (isset($_SESSION["Q_DATA"]))
+    unset($_SESSION["Q_DATA"]);
+if (isset($_SESSION["Q"]))
+    unset($_SESSION["Q"]);
 require_once "chunks/bottom.php";
