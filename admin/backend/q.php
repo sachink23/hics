@@ -26,23 +26,23 @@ if (isset($_POST["query"])) {
                 $_SESSION["Q_DATA"] = [];
             }
             pageInfo("green", $d);
-            header("Location: ../db.php");
+            header("Location: ../dba.php");
             exit;
         } else {
             pageInfo("orange", "Failed!");
-            header("Location: ../db.php");
+            header("Location: ../dba.php");
             exit;
         }
 
     } catch (PDOException $e) {
         pageInfo("red", $e->getMessage());
-        header("Location: ../db.php");
+        header("Location: ../dba.php");
         exit;
     }
 
 } else {
     pageInfo("red", "Empty Query");
-    header("Location: ../db.php");
+    header("Location: ../dba.php");
     exit;
 }
 ?>
