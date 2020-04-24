@@ -77,7 +77,7 @@
     else {
         ret400();
     }
-    function ret (int $statusCode, array $data) {
+    function ret ($statusCode, $data) {
         http_response_code($statusCode);
         die(json_encode($data));
     }
