@@ -68,7 +68,6 @@ if (
                      ");
         try {
             $stmt->execute($nums);
-
             pageInfo("green", "Successfully Updated Details!");
             header("Location: ../update.php");
             exit;

@@ -59,7 +59,7 @@ require_once "chunks/top.php";
             </div>
             <div class="col s12 padding-2 z-depth-1 margin-card">
                 <div class="reporting-form-field">
-                    <label class="lg-label" for="no_emp">Number of empty beds<sup>*</sup></label>
+                    <label class="lg-label" for="no_emp">Number of unoccupied beds<sup>*</sup></label>
                     <input type="number" id="no_emp" placeholder="If Not Applicable Use 0" name="no_emp" min="0"
                            max="1000000" required class="validate reporting-form-input">
                 </div>
@@ -81,8 +81,8 @@ require_once "chunks/top.php";
             let empty_beds = parseInt(document.getElementById("no_emp").value);
             if ((empty_beds + occ_beds) != total_beds) {
                 Swal.fire({
-                    title: "Please confirm number of occupied and empty beds!",
-                    text: "Please update your profile from update details page if you have any changes to the number of available beds as number of empty beds and occupied beds is not matching to the total available at your hospital i.e. " + total_beds,
+                    title: "Please confirm number of occupied and unoccupied beds!",
+                    text: "Please update your profile from update details page if you have any changes to the number of available beds as number of unoccupied beds and occupied beds is not matching to the total available at your hospital i.e. " + total_beds,
                     icon: "error"
                 })
                 return false;
