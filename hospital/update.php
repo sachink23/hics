@@ -126,8 +126,6 @@ require_once "chunks/top.php";
             </div>
             <div class="col s12">
                 <button type="submit" style="margin: 3px" class="btn waves-effect indigo right">Update Details</button>
-                <button type="reset" style="margin: 3px" class="btn waves-effect red right">Reset Form</button>
-
             </div>
         </form>
     </div>
