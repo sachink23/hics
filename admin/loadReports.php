@@ -89,7 +89,8 @@ if ($err == 0):
                     <thead>
                     <tr>
                         <th width="5%">Sr No</th>
-                        <th width="24%">Hospital Name</th>
+                        <th width="20%">Hospital Name</th>
+                        <th width="4%">Category</th>
                         <th width="10%">Taluka</th>
                         <th width="10%">Date</th>
                         <th width="10%">Total OPDs</th>
@@ -104,8 +105,11 @@ if ($err == 0):
                     foreach ($rows as $row): ?>
                         <tr>
                             <td><?= $i++ ?></td>
-                            <td><strong><?= $row["hospital_name"] ?></strong><br/>(<?= $row["hospital_type"] ?>)<br/><strong> Dr. <?= $row["name_of_doctor"] ?></strong><br/> Mob. <?= $row["mobile_number"] ?>
+                            <td><strong><?= $row["hospital_name"] ?></strong><br/>(<?= $row["hospital_type"] ?>
+                                )<br/><strong> Dr. <?= $row["name_of_doctor"] ?></strong><br/>
+                                Mob. <?= $row["mobile_number"] ?>
                             </td>
+                            <td><?= ucwords($row["cat"]) ?></td>
                             <td><?= $row["subdist"] ?></td>
 
                             <td><?= date("d/m/Y", strtotime($row["rp_date"])) ?></td>
