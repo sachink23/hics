@@ -27,11 +27,11 @@ try {
                     <tr>
                         <th>Sr No</th>
                         <th>Hospital Name</th>
+                        <th>Category</th>
                         <th>Type</th>
                         <th>Mobile</th>
                         <th>Taluka</th>
                         <th>Status</th>
-                        <th>Requested On</th>
                         <th>View</th>
                     </tr>
                     </thead>
@@ -40,14 +40,14 @@ try {
                     foreach ($new_requests as $req): ?>
                         <tr>
                             <td><?= $i++ ?></td>
+                            <td><?= ucwords($req["cat"]) ?></td>
                             <td><strong><?= $req["hospital_name"] ?></strong><br/>Dr. <?= $req["name_of_doctor"] ?></td>
                             <td><?= $req["hospital_type"] ?></td>
                             <td><?= $req["mobile_number"] ?></td>
                             <td><?= $req["subdist"] ?></td>
                             <td><?= ucwords(strtolower($req["ac_status"])) ?></td>
-                            <td><?= date("d/m/Y h:i:s A", strtotime($req["timestamp"])) ?></td>
                             <td><a href="viewHospital.php?id=<?= $req["uqid"] ?>"><i
-                                        class="material-icons">open_in_new</i> </a></td>
+                                            class="material-icons">open_in_new</i> </a></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

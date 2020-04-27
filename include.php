@@ -45,7 +45,7 @@ function validateNums(array $arr)
 {
     foreach ($arr as $item) {
         if (!(filter_var($item, FILTER_VALIDATE_INT) === 0)) {
-            if (!$item || ($item < 0 || $item > 1000)) {
+            if (!$item || ($item < 0 || $item > 1000000)) {
                 return false;
             }
         }
