@@ -15,16 +15,46 @@
         $address = trim($_POST["address"]);
         $mobile = filter_var($_POST["mobile"], FILTER_VALIDATE_INT);
         $doc_name = trim($_POST["doc_name"]);
+        $category = trim($_POST["hosp_cat"]);
 
-        if(strlen($hosp_name) < 5 || strlen($hosp_name) > 256) {
+
+        $no_of_beds = filter_var($_POST["no_of_beds"], FILTER_VALIDATE_INT);
+        $no_of_wards = filter_var($_POST["no_of_wards"], FILTER_VALIDATE_INT);
+        $no_of_docs = filter_var($_POST["no_of_docs"], FILTER_VALIDATE_INT);
+        $no_of_nurses = filter_var($_POST["no_of_nurses"], FILTER_VALIDATE_INT);
+        $no_of_other_staff = filter_var($_POST["no_of_other_staff"], FILTER_VALIDATE_INT);
+        $no_of_amb = filter_var($_POST["no_of_amb"], FILTER_VALIDATE_INT);
+        $no_of_ppe = filter_var($_POST["no_of_ppe"], FILTER_VALIDATE_INT);
+        $no_of_vent = filter_var($_POST["no_of_vent"], FILTER_VALIDATE_INT);
+        $no_of_o2_cel = filter_var($_POST["no_of_o2_cel"], FILTER_VALIDATE_INT);
+        $no_of_o2_conc = filter_var($_POST["no_of_o2_conc"], FILTER_VALIDATE_INT);
+        $no_of_monitors = filter_var($_POST["no_of_monitors"], FILTER_VALIDATE_INT);
+        $no_of_monitors = filter_var($_POST["no_of_monitors"], FILTER_VALIDATE_INT);
+        $no_of_neb = filter_var($_POST["no_of_neb"], FILTER_VALIDATE_INT);
+        $nums = [
+            $no_of_beds, $no_of_wards, $no_of_docs,
+            $no_of_nurses, $no_of_other_staff,
+            $no_of_amb, $no_of_ppe, $no_of_vent,
+            $no_of_o2_cel, $no_of_o2_conc,
+            $no_of_monitors, $no_of_neb
+        ];
+        if (!validateNums($nums)) {
             ret400();
         }
 
-        if(!($hosp_type == "ayurvedic" || $hosp_type == "allopathy" || $hosp_type == "homoeopathy" || $hosp_type == "unani" || $hosp_type == "other")) {
+        if (!($category == "private" || $category == "government")) {
             ret400();
         }
-        if($hosp_type == "other") {
-            if(strlen($other_type) < 3 || strlen($other_type) > 64) {
+
+        if (strlen($hosp_name) < 5 || strlen($hosp_name) > 256) {
+            ret400();
+        }
+
+        if (!($hosp_type == "ayurvedic" || $hosp_type == "allopathy" || $hosp_type == "homoeopathy" || $hosp_type == "unani" || $hosp_type == "other")) {
+            ret400();
+        }
+        if ($hosp_type == "other") {
+            if (strlen($other_type) < 3 || strlen($other_type) > 64) {
                 ret400();
             }
             $hosp_type = "Other - (".$other_type.")";
@@ -42,17 +72,41 @@
             if($mobile < 100000000 || $mobile > 9999999999) {
                 ret400();
             }
-        }
-        else {
+        } else {
             ret400();
         }
-        if(strlen($doc_name) < 5 || strlen($doc_name) > 512) {
+        if (strlen($doc_name) < 5 || strlen($doc_name) > 512) {
             ret400();
         }
         require_once "include.php";
         $db = new db;
         $con = $db->con();
-        $q = $con->prepare("INSERT INTO hospitals (mobile_number, password, hospital_name, hospital_type, name_of_doctor, subdist, address, ac_status, uqid, reg_ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, UUID(),?)");
+        $q = $con->prepare("INSERT INTO hospitals 
+            (
+             mobile_number, 
+             password, 
+             hospital_name, 
+             hospital_type, 
+             name_of_doctor, 
+             subdist, 
+             address,
+             ac_status, 
+             uqid, 
+             reg_ip,
+             cat,
+             no_of_beds,
+             no_of_wards,
+             no_of_docs,
+             no_of_nurses,
+             no_of_other_staff,
+             no_of_ambs,
+             no_of_ppe,
+             no_of_vents,
+             no_of_o2_cel,
+             no_of_o2_conc,
+             no_of_monitors,
+             no_of_nebs
+             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, UUID(),?, ?,?,?,?,?,?,?,?,?,?,?,?,?)");
         try {
             $q->execute([
                 $mobile,
@@ -63,7 +117,20 @@
                 $subdist,
                 htmlentities(utf8_encode($address)),
                 "REQUESTED",
-                $_SERVER["REMOTE_ADDR"]
+                $_SERVER["REMOTE_ADDR"],
+                $category,
+                $no_of_beds,
+                $no_of_wards,
+                $no_of_docs,
+                $no_of_nurses,
+                $no_of_other_staff,
+                $no_of_amb,
+                $no_of_ppe,
+                $no_of_vent,
+                $no_of_o2_cel,
+                $no_of_o2_conc,
+                $no_of_monitors,
+                $no_of_neb
             ]);
             ret(200, ["error" => "false", "message" => "Registration Successful!"]);
         }
@@ -73,14 +140,28 @@
             }
             ret(500, ["error"=>"true", "message" => "Database Error Occurred!"]);
         }
-    }
-    else {
+    } else {
         ret400();
     }
-    function ret ($statusCode, $data) {
-        http_response_code($statusCode);
-        die(json_encode($data));
+function ret($statusCode, $data)
+{
+    http_response_code($statusCode);
+    die(json_encode($data));
+}
+
+function ret400()
+{
+    ret(400, ["error" => "true", "message" => "Fields Missing or Invalid!"]);
+}
+
+function validateNums(array $arr)
+{
+    foreach ($arr as $item) {
+        if (!(filter_var($item, FILTER_VALIDATE_INT) === 0)) {
+            if (!$item || ($item < 0 || $item > 1000)) {
+                return false;
+            }
+        }
     }
-    function ret400() {
-        ret(400, ["error"=>"true", "message"=>"Fields Missing or Invalid!"]);
-    }
+    return true;
+}

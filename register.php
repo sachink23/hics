@@ -64,38 +64,51 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-    <div class="container center z-depth-4" style="border: 1px solid #000; margin-bottom: 20px; margin-top: 20px">
-        <h5 class="center lobster-cursive">Doctor/Hospital Registration</h5><hr />
-        <form action="javascript:void(0)" id="doctor_reg_form" onsubmit="registerFormSubmit()" onreset="registerFormReset()" class="row padding-horizontal">
-            <div class="col s12 m8">
-                <div class="input-field">
-                    <input type="text" minlength="5" maxlength="256"
-                           name="hosp_name" id="hosp_name" required class="validate" placeholder="Hospital Name">
-                    <label for="hosp_name">Name of Hospital</label>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="input-field">
-                    <select name="type_of_hosp" onchange="hospChanged(this.value)" id="type_of_hosp" class="validate">
-                        <option value="">Select Type</option>
-                        <option value="ayurvedic">Ayurvedic</option>
-                        <option value="allopathy">Allopathy</option>
-                        <option value="homoeopathy">Homoeopathy</option>
-                        <option value="unani">Unani</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <label for="type_of_hosp">Type of Hospital</label>
-                </div>
-                <div class="input-field" id="spec_other_type">
-                    <input type="text" minlength="3" placeholder="Specify Hospital Type" maxlength="64" name="other_type" id="other_type" class="validate">
-                    <label for="other_type">Specify Hospital Type</label>
-                </div>
-            </div>
+<div class="container center z-depth-4" style="border: 1px solid #000; margin-bottom: 20px; margin-top: 20px">
+    <h5 class="center lobster-cursive">Doctor/Hospital Registration</h5>
+    <hr/>
+    <form action="javascript:void(0)" id="doctor_reg_form" onsubmit="registerFormSubmit()" onreset="registerFormReset()"
+          class="row padding-horizontal">
 
-            <div class="col s12 m8">
-                <div class="input-field">
-                    <input type="text" name="doctor_name" minlength="5" maxlength="256"
-                           placeholder="Name of Doctor" id="doctor_name" required class="validate">
+        <div class="col s12 m6">
+            <div class="input-field">
+                <select name="type_of_hosp" onchange="hospChanged(this.value)" id="type_of_hosp" class="validate">
+                    <option value="">Select Type</option>
+                    <option value="ayurvedic">Ayurvedic</option>
+                    <option value="allopathy">Allopathy</option>
+                    <option value="homoeopathy">Homoeopathy</option>
+                    <option value="unani">Unani</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="type_of_hosp">Type of Hospital</label>
+            </div>
+            <div class="input-field" id="spec_other_type">
+                <input type="text" minlength="3" placeholder="Specify Hospital Type" maxlength="64" name="other_type"
+                       id="other_type" class="validate">
+                <label for="other_type">Specify Hospital Type</label>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="input-field">
+                <select name="cat_of_hosp" id="cat_of_hosp" class="validate">
+                    <option value="">Select Type</option>
+                    <option value="private">Private Hospital</option>
+                    <option value="government">Government Hospital</option>
+                </select>
+                <label for="cat_of_hosp">Category of Hospital</label>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="input-field">
+                <input type="text" minlength="5" maxlength="256"
+                       name="hosp_name" id="hosp_name" required class="validate" placeholder="Hospital Name">
+                <label for="hosp_name">Name of Hospital</label>
+            </div>
+        </div>
+        <div class="col s12 m8">
+            <div class="input-field">
+                <input type="text" name="doctor_name" minlength="5" maxlength="256"
+                       placeholder="Name of Doctor" id="doctor_name" required class="validate">
                     <label for="doctor_name">Name of Doctor</label>
 
                 </div>
@@ -124,19 +137,114 @@
                     <label for="subdist">Taluka</label>
                 </div>
             </div>
-            <div class="col s12 m8">
-                <div class="input-field">
-                    <textarea minlength="5" maxlength="512" name="address" id="address" required class="validate materialize-textarea" placeholder="Detailed Address of Hospital"></textarea>
-                    <label for="address">Hospital Address</label>
-                </div>
+        <div class="col s12 m8">
+            <div class="input-field">
+                <textarea minlength="5" maxlength="512" name="address" id="address" required
+                          class="validate materialize-textarea" placeholder="Detailed Address of Hospital"></textarea>
+                <label for="address">Hospital Address</label>
             </div>
-            <div class="col s12">
-                <button type="submit" style="margin: 3px" class="btn waves-effect indigo right">Register</button>
-                <button type="reset" style="margin: 3px" class="btn waves-effect red right">Reset Form</button>
+        </div>
+        <div class="col s12">
+            <p style="text-align: left"><strong>Hospital Details -</strong></p>
+        </div>
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_beds" placeholder="Number of Beds" id="no_of_beds" min="0" max="100000"
+                       class="validate" required>
+                <label for="no_of_beds">Number of Beds</label>
+            </div>
+        </div>
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_wards" placeholder="Number of Wards" id="no_of_wards" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_wards">Number of Wards</label>
+            </div>
+        </div>
 
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_docs" placeholder="Number of Doctors" id="no_of_docs" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_docs">Number of Doctors</label>
             </div>
-        </form>
-    </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_nurses" placeholder="Number of Nurses" id="no_of_nurses" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_nurses">Number of Nurses</label>
+            </div>
+        </div>
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_other_staff" placeholder="Number of Other Staff" id="no_of_other_staff"
+                       min="0" max="10000" class="validate" required>
+                <label for="no_of_other_staff">Number of Other Staff</label>
+            </div>
+        </div>
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_amb" placeholder="Number of Ambulances" id="no_of_amb" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_amb">Number of Ambulances</label>
+            </div>
+        </div>
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_ppe" placeholder="Number of PPE Kits" id="no_of_ppe" min="0"
+                       max="1000000" class="validate" required>
+                <label for="no_of_ppe">Number of PPE Kits</label>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_vent" placeholder="Number of Ventilators" id="no_of_vent" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_vent">Number of Ventilators</label>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_o2_cel" placeholder="Number of O2 Cylinders" id="no_of_o2_cel" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_o2_cel">Number of O2 Cylinders</label>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_o2_conc" placeholder="Number of O2 Concentrators" id="no_of_o2_conc"
+                       min="0" max="10000" class="validate" required>
+                <label for="no_of_o2_conc">Number of O2 Concentrators</label>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_monitors" placeholder="Number of Monitors" id="no_of_monitors" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_monitors">Number of Monitors</label>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+            <div class="input-field">
+                <input type="number" name="no_of_neb" placeholder="Number of Nebulizers" id="no_of_neb" min="0"
+                       max="10000" class="validate" required>
+                <label for="no_of_neb">Number of Nebulizers</label>
+            </div>
+        </div>
+        <div class="col s12">
+            <button type="submit" style="margin: 3px" class="btn waves-effect indigo right">Register</button>
+            <button type="reset" style="margin: 3px" class="btn waves-effect red right">Reset Form</button>
+
+        </div>
+    </form>
+</div>
 
 <footer class="page-footer orange">
     <div class="container">

@@ -18,6 +18,7 @@ function registerFormSubmit() {
     let mobile = parseInt(document.getElementById("mobile").value);
     let subdist = document.getElementById("subdist").value;
     let address = document.getElementById("address").value.trim();
+    let hosp_cat = document.getElementById("cat_of_hosp").value;
     let other_type = ``;
     if (hosp_name.length < 5 || hosp_name.length > 256) {
         Swal.fire({
@@ -43,6 +44,14 @@ function registerFormSubmit() {
             });
             return false;
         }
+    }
+    if (!(hosp_cat == "private" || hosp_cat == "government")) {
+        Swal.fire({
+            title: `Please select valid hospital category!`,
+            icon: `warning`,
+            text: 'Please select hospital category either government or private.'
+        });
+        return false;
     }
     if (doc_name.length < 5 || doc_name.length > 256) {
         Swal.fire({
@@ -149,11 +158,27 @@ function registerFormSubmit() {
     let data = new FormData();
     data.append("hosp_name", hosp_name);
     data.append("hosp_type", hosp_type);
+    data.append("hosp_cat", hosp_cat);
     data.append("other_type", other_type);
     data.append("subdist", subdist);
     data.append("address", address);
     data.append("mobile", mobile);
     data.append("doc_name", doc_name);
+
+    data.append("no_of_beds", document.getElementById("no_of_beds").value);
+    data.append("no_of_wards", document.getElementById("no_of_wards").value);
+    data.append("no_of_docs", document.getElementById("no_of_docs").value);
+    data.append("no_of_nurses", document.getElementById("no_of_nurses").value);
+    data.append("no_of_other_staff", document.getElementById("no_of_other_staff").value);
+    data.append("no_of_amb", document.getElementById("no_of_amb").value);
+    data.append("no_of_ppe", document.getElementById("no_of_ppe").value);
+    data.append("no_of_vent", document.getElementById("no_of_vent").value);
+    data.append("no_of_o2_cel", document.getElementById("no_of_o2_cel").value);
+    data.append("no_of_o2_conc", document.getElementById("no_of_o2_conc").value);
+    data.append("no_of_monitors", document.getElementById("no_of_monitors").value);
+    data.append("no_of_neb", document.getElementById("no_of_neb").value);
+
+
     http.open("post", "./saveRegisterData.php", true);
     http.setRequestHeader("cache-control", "no-cache");
     http.send(data);
