@@ -27,6 +27,8 @@ if ($err == 0):
                         <th>IPDs (Remaining)</th>
                         <th>Surgeries / Deliveries</th>
                         <th>Total Patients Referred to District Covid Facility</th>
+                        <th>Occupied Beds</th>
+                        <th>Unoccupied Beds</th>
                         <th>Reported On</th>
                     </tr>
                     </thead>
@@ -40,6 +42,8 @@ if ($err == 0):
                             <td><?= $row["no_ipd"] ?></td>
                             <td><?= $row["no_surg"] ?></td>
                             <td><?= $row["no_cov"] ?></td>
+                            <td><?= $row["occupied_beds"] ?></td>
+                            <td><?= $row["empty_beds"] ?></td>
                             <td><?= date("d/m/y h:i:s A", strtotime($row["reported_on"])) ?></td>
                         </tr>
                     <?php endforeach; ?>
