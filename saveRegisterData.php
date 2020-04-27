@@ -6,7 +6,20 @@
         isset($_POST["subdist"]) &&
         isset($_POST["address"]) &&
         isset($_POST["mobile"]) &&
-        isset($_POST["doc_name"])
+        isset($_POST["hosp_cat"]) &&
+        isset($_POST["doc_name"]) &&
+        isset($_POST["no_of_beds"]) &&
+        isset($_POST["no_of_wards"]) &&
+        isset($_POST["no_of_docs"]) &&
+        isset($_POST["no_of_nurses"]) &&
+        isset($_POST["no_of_other_staff"]) &&
+        isset($_POST["no_of_amb"]) &&
+        isset($_POST["no_of_ppe"]) &&
+        isset($_POST["no_of_vent"]) &&
+        isset($_POST["no_of_o2_cel"]) &&
+        isset($_POST["no_of_o2_conc"]) &&
+        isset($_POST["no_of_monitors"]) &&
+        isset($_POST["no_of_monitors"])
     ) {
         $hosp_name = trim($_POST["hosp_name"]);
         $hosp_type = trim($_POST["hosp_type"]);
@@ -29,7 +42,6 @@
         $no_of_o2_cel = filter_var($_POST["no_of_o2_cel"], FILTER_VALIDATE_INT);
         $no_of_o2_conc = filter_var($_POST["no_of_o2_conc"], FILTER_VALIDATE_INT);
         $no_of_monitors = filter_var($_POST["no_of_monitors"], FILTER_VALIDATE_INT);
-        $no_of_monitors = filter_var($_POST["no_of_monitors"], FILTER_VALIDATE_INT);
         $no_of_neb = filter_var($_POST["no_of_neb"], FILTER_VALIDATE_INT);
         $nums = [
             $no_of_beds, $no_of_wards, $no_of_docs,
@@ -39,6 +51,9 @@
             $no_of_monitors, $no_of_neb
         ];
         if (!validateNums($nums)) {
+            ret400();
+        }
+        if ($no_of_docs < 1) {
             ret400();
         }
 
@@ -152,16 +167,4 @@ function ret($statusCode, $data)
 function ret400()
 {
     ret(400, ["error" => "true", "message" => "Fields Missing or Invalid!"]);
-}
-
-function validateNums(array $arr)
-{
-    foreach ($arr as $item) {
-        if (!(filter_var($item, FILTER_VALIDATE_INT) === 0)) {
-            if (!$item || ($item < 0 || $item > 1000)) {
-                return false;
-            }
-        }
-    }
-    return true;
 }

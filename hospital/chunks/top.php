@@ -109,6 +109,7 @@ $con = $db->con();
 
                             <!-- profile-dropdown -->
                             <ul id="profile-dropdown" class="dropdown-content">
+
                                 <li>
                                     <a href="my-account.php" class="grey-text text-darken-1">
                                         <i class="material-icons">face</i> My Account</a>
@@ -136,6 +137,12 @@ $con = $db->con();
                             <a href="./reports.php" class="waves-effect waves-cyan">
                                 <i class="material-icons">insert_chart_outlined</i>
                                 <span class="nav-text">Reports</span>
+                            </a>
+                        </li>
+                        <li class="bold">
+                            <a href="./update.php" class="waves-effect waves-cyan">
+                                <i class="material-icons">update</i>
+                                <span class="nav-text">Update Details</span>
                             </a>
                         </li>
                         <li class="bold">

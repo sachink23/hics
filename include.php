@@ -29,15 +29,29 @@ function pageInfo($type, $content)
         $_SESSION["PAGE_INFO"] = $content;
     }
 
-    function clearPageInfo() {
-        unset($_SESSION["PAGE_INFO_EXISTS"]);
-        unset($_SESSION["TYPE"]);
-        unset($_SESSION["PAGE_INFO"]);
+function clearPageInfo()
+{
+    unset($_SESSION["PAGE_INFO_EXISTS"]);
+    unset($_SESSION["TYPE"]);
+    unset($_SESSION["PAGE_INFO"]);
+}
+
+function autoloader($class)
+{
+    require_once APP_ROOT . "/classes/" . $class . ".class.php";
+}
+
+function validateNums(array $arr)
+{
+    foreach ($arr as $item) {
+        if (!(filter_var($item, FILTER_VALIDATE_INT) === 0)) {
+            if (!$item || ($item < 0 || $item > 1000)) {
+                return false;
+            }
+        }
     }
+    return true;
+}
 
-	function autoloader($class) {
-	    require_once APP_ROOT . "/classes/" . $class . ".class.php";
-	}
-
-	spl_autoload_register("autoloader");
+spl_autoload_register("autoloader");
 date_default_timezone_set('Asia/Kolkata');

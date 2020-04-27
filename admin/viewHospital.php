@@ -52,6 +52,10 @@ try {
                                     Name : </strong><?= $hosp["hospital_name"] ?></p>
                         </div>
                         <div class="col s12">
+                            <p style="font-size: 16px;" title="<?= ucfirst($hosp["cat"]) ?>" class="truncate"><strong>Category
+                                    : </strong><?= ucfirst($hosp["cat"]) ?></p>
+                        </div>
+                        <div class="col s12">
                             <p style="font-size: 16px;" title="<?= $hosp["hospital_type"] ?>" class="truncate"><strong>Type
                                     : </strong><?= $hosp["hospital_type"] ?></p>
                         </div>
@@ -72,7 +76,61 @@ try {
                         <div class="col s12">
                             <p style="font-size: 16px;" title="<?= $hosp["address"] ?>" class="truncate"><strong>Address
                                     : </strong><?= $hosp["address"] ?></p>
-                            <hr/>
+                        </div>
+                        <div class="col s12">
+                            <p style="font-size: 16px;" class="truncate"><strong>Availabilities</strong></p>
+
+                            <table class="centered highlight">
+                                <tr>
+                                    <th width="40%">Beds</th>
+                                    <td><?= $hosp["no_of_beds"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Wards</th>
+                                    <td><?= $hosp["no_of_wards"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Doctors</th>
+                                    <td><?= $hosp["no_of_docs"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Nurses</th>
+                                    <td><?= $hosp["no_of_nurses"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Other Staff</th>
+                                    <td><?= $hosp["no_of_other_staff"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Ambulances</th>
+                                    <td><?= $hosp["no_of_ambs"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>PPE Kits</th>
+                                    <td><?= $hosp["no_of_ppe"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Ventilators</th>
+                                    <td><?= $hosp["no_of_vents"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>O<sub>2</sub> Cylinders</th>
+                                    <td><?= $hosp["no_of_o2_cel"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>O<sub>2</sub> Concentrators</th>
+                                    <td><?= $hosp["no_of_o2_conc"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Monitors</th>
+                                    <td><?= $hosp["no_of_monitors"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Nebulizers</th>
+                                    <td><?= $hosp["no_of_nebs"] ?></td>
+                                </tr>
+                            </table>
+                            <br/>
                         </div>
                         <div class="col s12"><strong class="left hide-on-small-and-down" style="font-size: 16px;">Take
                                 Action:</strong>

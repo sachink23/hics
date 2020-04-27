@@ -72,10 +72,20 @@
 
         <div class="col s12 m6">
             <div class="input-field">
+                <select name="cat_of_hosp" id="cat_of_hosp" class="validate">
+                    <option value="">Select Type</option>
+                    <option value="private">Private Hospital</option>
+                    <option value="government">Government Hospital</option>
+                </select>
+                <label for="cat_of_hosp">Category of Hospital</label>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="input-field">
                 <select name="type_of_hosp" onchange="hospChanged(this.value)" id="type_of_hosp" class="validate">
                     <option value="">Select Type</option>
-                    <option value="ayurvedic">Ayurvedic</option>
                     <option value="allopathy">Allopathy</option>
+                    <option value="ayurvedic">Ayurvedic</option>
                     <option value="homoeopathy">Homoeopathy</option>
                     <option value="unani">Unani</option>
                     <option value="other">Other</option>
@@ -88,16 +98,6 @@
                 <label for="other_type">Specify Hospital Type</label>
             </div>
         </div>
-        <div class="col s12 m6">
-            <div class="input-field">
-                <select name="cat_of_hosp" id="cat_of_hosp" class="validate">
-                    <option value="">Select Type</option>
-                    <option value="private">Private Hospital</option>
-                    <option value="government">Government Hospital</option>
-                </select>
-                <label for="cat_of_hosp">Category of Hospital</label>
-            </div>
-        </div>
         <div class="col s12">
             <div class="input-field">
                 <input type="text" minlength="5" maxlength="256"
@@ -105,41 +105,42 @@
                 <label for="hosp_name">Name of Hospital</label>
             </div>
         </div>
-        <div class="col s12 m8">
+        <div class="col s12">
             <div class="input-field">
                 <input type="text" name="doctor_name" minlength="5" maxlength="256"
-                       placeholder="Name of Doctor" id="doctor_name" required class="validate">
-                    <label for="doctor_name">Name of Doctor</label>
+                       placeholder="Name of Doctor (Don't Include Dr.)" id="doctor_name" required class="validate">
+                <label for="doctor_name">Name of Doctor (Don't Include Dr.)</label>
 
-                </div>
             </div>
-            <div class="col s12 m4">
-                <div class="input-field">
-                    <input type="number" name="mobile" placeholder="Doctors Mobile" id="mobile" min="100000000" max="9999999999" class="validate" required>
-                    <label for="mobile">Mobile Number</label>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="input-field">
-                    <select name="subdist" id="subdist" class="validate">
-                        <option value="">Select Taluka</option>
-                        <option value="Parbhani (City)">Parbhani (City)</option>
-                        <option value="Parbhani">Parbhani</option>
-                        <option value="Jintur">Jintur</option>
-                        <option value="Pathri">Pathri</option>
-                        <option value="Manwath">Manwath</option>
-                        <option value="Purna">Purna</option>
-                        <option value="Selu">Selu</option>
-                        <option value="Sonpeth">Sonpeth</option>
-                        <option value="Palam">Palam</option>
-                        <option value="Gangakhed">Gangakhed</option>
-                    </select>
-                    <label for="subdist">Taluka</label>
-                </div>
-            </div>
-        <div class="col s12 m8">
+        </div>
+        <div class="col s12 m6">
             <div class="input-field">
-                <textarea minlength="5" maxlength="512" name="address" id="address" required
+                <input type="number" name="mobile" placeholder="Doctors Mobile" id="mobile" min="100000000"
+                       max="9999999999" class="validate" required>
+                <label for="mobile">Mobile Number</label>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="input-field">
+                <select name="subdist" id="subdist" class="validate">
+                    <option value="">Select Taluka</option>
+                    <option value="Parbhani (City)">Parbhani (City)</option>
+                    <option value="Parbhani">Parbhani</option>
+                    <option value="Jintur">Jintur</option>
+                    <option value="Pathri">Pathri</option>
+                    <option value="Manwath">Manwath</option>
+                    <option value="Purna">Purna</option>
+                    <option value="Selu">Selu</option>
+                    <option value="Sonpeth">Sonpeth</option>
+                    <option value="Palam">Palam</option>
+                    <option value="Gangakhed">Gangakhed</option>
+                </select>
+                <label for="subdist">Taluka</label>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="input-field">
+                <textarea minlength="5" maxlength="512" style="height: 70px" name="address" id="address" required
                           class="validate materialize-textarea" placeholder="Detailed Address of Hospital"></textarea>
                 <label for="address">Hospital Address</label>
             </div>
@@ -164,7 +165,7 @@
 
         <div class="col s12 m6 l4">
             <div class="input-field">
-                <input type="number" name="no_of_docs" placeholder="Number of Doctors" id="no_of_docs" min="0"
+                <input type="number" name="no_of_docs" placeholder="Number of Doctors" id="no_of_docs" min="1"
                        max="10000" class="validate" required>
                 <label for="no_of_docs">Number of Doctors</label>
             </div>
