@@ -1,15 +1,20 @@
 <?php
 
-$title = "Doctor's Dashboard : Update Details";
+$title = "Hospital's Dashboard : Update Details";
 require_once "chunks/top.php";
 
 ?>
+    <style>
+        label {
+            color: black !important;
+        }
+    </style>
     <div class="container">
         <form method="post" action="backend/update-hospital-details.php" class="row z-depth-1"
               style="margin-top: 10px; padding: 10px;">
             <div class="col s12">
                 <h5 style="text-align: left"><strong>Update Hospital Details -</strong></h5>
-                <hr/>
+                <br/>
             </div>
             <div class="col s12 m6 l4">
                 <div class="input-field">

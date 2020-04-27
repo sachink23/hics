@@ -1,5 +1,5 @@
 <?php
-$title = "Doctor's Dashboard : My Account";
+$title = "Hospital's Dashboard : My Account";
 require_once "chunks/top.php";
 $hosp = $user;
 ?>

@@ -45,23 +45,24 @@
           </ul>
 
           <ul class="right hide-on-med-and-down">
-              <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
+              <li><a class="font-nav-bar" href="./hospital">Hospital's Login</a></li>
           </ul>
 
           <ul class="right hide-on-med-and-down">
-              <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
+              <li><a class="font-nav-bar" href="./register.php">Hospital's Registration</a></li>
           </ul>
           <ul class="right hide-on-med-and-down">
               <li><a class="font-nav-bar" href="./">Homepage</a></li>
-      </ul>
-  
-      <ul id="nav-mobile" class="sidenav">
-          <li class="padding-horizontal"><img src="./assets/logo/hics.png" alt="hics" width="200px"></li><br/>
-        <li><a class="font-nav-bar" href="./">Homepage</a></li>
-        <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
-            <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
-            <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
-          <?php if(isset($_SESSION["user_type"])): ?>
+          </ul>
+
+          <ul id="nav-mobile" class="sidenav">
+              <li class="padding-horizontal"><img src="./assets/logo/hics.png" alt="hics" width="200px"></li>
+              <br/>
+              <li><a class="font-nav-bar" href="./">Homepage</a></li>
+              <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
+              <li><a class="font-nav-bar" href="./register.php">Hospital's Registration</a></li>
+              <li><a class="font-nav-bar" href="./hospital">Hospital's Login</a></li>
+              <?php if(isset($_SESSION["user_type"])): ?>
             <li><a class="font-nav-bar" href="./logout">Logout</a></li>
           <?php endif; ?>
         </ul>
@@ -70,28 +71,29 @@
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container center">
-      <br><br>
-      <img src="./assets/logo/hics.png" class="responsive-img" alt="HICS Logo">
-      <div class="row center">
-        <h4 class="header col s12 light">Hospital Information Collection System</h4><hr/>
-        <div class="col s12 light">
-<h6>परभणी जिल्ह्यातील सर्व हॉस्पिटलची माहिती आणि त्यांच्या दैनंदिन अहावालासाठीची प्रणाली.</h6>
+        <br><br>
+        <img src="./assets/logo/hics.png" class="responsive-img" alt="HICS Logo">
+        <div class="row center">
+            <h4 class="header col s12 light">Hospital Information Collection System</h4>
+            <hr/>
+            <div class="col s12 light">
+                <h6>परभणी जिल्ह्यातील सर्व हॉस्पिटलची माहिती आणि त्यांच्या दैनंदिन अहावालासाठीची प्रणाली.</h6>
+            </div>
+            <div class="col s12">
+                <br/>
+            </div>
+            <div class="col s12 l4 m12 center">
+                <h5 class="center"><a href="./hospital">Hospital's Login</a></h5>
+            </div>
+            <div class="col s12 l4 m12 center">
+                <h5 class="center"><a href="./register.php">Hospital's Registration</a></h5>
+            </div>
+            <div class="col s12 l4 m12 center">
+                <h5 class="center"><a href="./admin">Admin Login</a></h5>
+            </div>
+
         </div>
-        <div class="col s12">
-          <br />
-        </div>
-        <div class="col l4 m12 center">
-          <h5 class="center"><a href="./hospital">Doctor's Login</a></h5>
-        </div>
-        <div class="col l4 m12 center">
-          <h5 class="center"><a href="./register.php">Doctor's Registration</a></h5>
-        </div>
-        <div class="col l4 m12 center">
-          <h5 class="center" ><a href="./admin">Admin Login</a></h5>
-        </div>
-        
-      </div>
-      <br><br>
+        <br><br>
 
     </div>
   </div>

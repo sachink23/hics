@@ -1,16 +1,16 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-    <title>Doctor Registration</title>
+    <title>Hospital Registration</title>
 
     <!-- Meta Tags -->
 
     <meta charset="utf-8">
     <meta name="description" content="जिल्हा आपत्ती व्यवस्थापन प्राधिकरण जिल्हाधिकारी कार्यालय परभणी">
     <meta name="author" content="Sachin Kekarjawalekar">
-    <meta name="theme-color" content="#FF0000" />
+    <meta name="theme-color" content="#FF0000"/>
     <!-- Opengraph Meta Tags -->
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="HICS SYSTEM"/>
@@ -25,14 +25,18 @@
 
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css">
-
+    <style>
+        label {
+            color: black !important;
+        }
+    </style>
 </head>
 
 <body>
 
 <nav class="red lighten-1" role="navigation">
     <div class="nav-wrapper padding-horizontal"><a id="logo-container" href="./" class="brand-logo">HICS <span
-                class="hide-on-small-and-down">SYSTEM</span></a>
+                    class="hide-on-small-and-down">SYSTEM</span></a>
         <?php if(isset($_SESSION["user_type"])): ?>
         <ul class="right hide-on-med-and-down">
             <li><a class="font-nav-bar" href="./logout">Logout</a></li>
@@ -42,10 +46,10 @@
             <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
+            <li><a class="font-nav-bar" href="./hospital">Hospital's Login</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
+            <li><a class="font-nav-bar" href="./register.php">Hospital's Registration</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
             <li><a class="font-nav-bar" href="./">Homepage</a></li>
@@ -55,9 +59,9 @@
             <li class="padding-horizontal padding-vertical"><img src="./assets/logo/hics.png" width="200px"></li>
             <li><a class="font-nav-bar" href="./">Homepage</a></li>
             <li><a class="font-nav-bar" href="./admin">Admin Login</a></li>
-            <li><a class="font-nav-bar" href="./hospital">Doctor Login</a></li>
-            <li><a class="font-nav-bar" href="./register.php">Doctor Registration</a></li>
-        <?php if(isset($_SESSION["user_type"])): ?>
+            <li><a class="font-nav-bar" href="./hospital">Hospital's Login</a></li>
+            <li><a class="font-nav-bar" href="./register.php">Hospital's Registration</a></li>
+            <?php if(isset($_SESSION["user_type"])): ?>
             <li><a class="font-nav-bar" href="./logout">Logout</a></li>
         <?php endif; ?>
         </ul>
@@ -65,7 +69,7 @@
     </div>
 </nav>
 <div class="container center z-depth-4" style="border: 1px solid #000; margin-bottom: 20px; margin-top: 20px">
-    <h5 class="center lobster-cursive">Doctor/Hospital Registration</h5>
+    <h5 class="center lobster-cursive">Hospital Registration</h5>
     <hr/>
     <form action="javascript:void(0)" id="doctor_reg_form" onsubmit="registerFormSubmit()" onreset="registerFormReset()"
           class="row padding-horizontal">

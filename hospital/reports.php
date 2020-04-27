@@ -1,5 +1,5 @@
 <?php
-$title = "Doctor's Dashboard : Reports";
+$title = "Hospital's Dashboard : Reports";
 require_once "chunks/top.php";
 $con = $db->con();
 $err = 0;

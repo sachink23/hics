@@ -1,5 +1,5 @@
 <?php
-$title = "Hospital/Doctor's Dashboard";
+$title = "Hospital Dashboard";
 require_once "chunks/top.php";
 ?>
     <div class="container">
