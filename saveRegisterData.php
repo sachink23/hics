@@ -1,14 +1,16 @@
 <?php
-    if(
-        isset($_POST["hosp_name"]) &&
-        isset($_POST["hosp_type"]) &&
-        isset($_POST["other_type"]) &&
-        isset($_POST["subdist"]) &&
-        isset($_POST["address"]) &&
-        isset($_POST["mobile"]) &&
-        isset($_POST["hosp_cat"]) &&
-        isset($_POST["doc_name"]) &&
-        isset($_POST["no_of_beds"]) &&
+
+require_once "include.php";
+if (
+    isset($_POST["hosp_name"]) &&
+    isset($_POST["hosp_type"]) &&
+    isset($_POST["other_type"]) &&
+    isset($_POST["subdist"]) &&
+    isset($_POST["address"]) &&
+    isset($_POST["mobile"]) &&
+    isset($_POST["hosp_cat"]) &&
+    isset($_POST["doc_name"]) &&
+    isset($_POST["no_of_beds"]) &&
         isset($_POST["no_of_wards"]) &&
         isset($_POST["no_of_docs"]) &&
         isset($_POST["no_of_nurses"]) &&
@@ -53,11 +55,9 @@
         if (!validateNums($nums)) {
             ret400();
         }
-        if ($no_of_docs < 1) {
-            ret400();
-        }
 
-        if (!($category == "private" || $category == "government")) {
+
+    if (!($category == "private" || $category == "government")) {
             ret400();
         }
 
@@ -93,7 +93,6 @@
         if (strlen($doc_name) < 5 || strlen($doc_name) > 512) {
             ret400();
         }
-        require_once "include.php";
         $db = new db;
         $con = $db->con();
         $q = $con->prepare("INSERT INTO hospitals 
