@@ -74,8 +74,8 @@ if (
             $con->beginTransaction();
             $q = $con->prepare("INSERT INTO reporting (rp_date, no_opd, no_ipd, no_surg, no_cov, reg_ip, occupied_beds, empty_beds, hospital_id, uqid) VALUES (?,?,?,?,?,?,?,?,?, uuid())");
             $q->execute([$_POST["date"], $opd, $ipd, $surge, $cov, $_SERVER["REMOTE_ADDR"], $occ, $emp, $user["hospital_id"]]);
-            $q = $con->prepare("UPDATE hospitals SET no_of_occ_beds = ? WHERE uqid = ?");
-            $q->execute([$occ, $user["uqid"]]);
+            $q = $con->prepare("UPDATE hospitals SET no_of_occ_beds = ?, ipd_rem = ? WHERE uqid = ?");
+            $q->execute([$occ, $ipd, $user["uqid"]]);
             $con->commit();
             pageInfo("green", "Successfully Reported!");
             header("Location: ../");
