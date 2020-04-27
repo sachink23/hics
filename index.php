@@ -91,7 +91,11 @@
             <div class="col s12 l4 m12 center">
                 <h5 class="center"><a href="./admin">Admin Login</a></h5>
             </div>
-
+            <div class="col s12 center">
+                <br class="hide-on-med-and-down"/><br class="hide-on-med-and-down"/>
+                <h5 class="center"><a href="./assets/guidelines.pdf">Important Guidelines (महत्वाच्या मार्गदर्शक
+                        सूचना)</a></h5>
+            </div>
         </div>
         <br><br>
 
@@ -100,8 +104,8 @@
 
 
   <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
+      <div class="container">
+          <div class="row">
         <div class="col s12">
           <h6 class="white-text center text-padding">निर्मिती : जिल्हा आपत्ती व्यवस्थापन प्राधिकरण परभणी, जिल्हाधिकारी कार्यालय, परभणी</h6>
         </div>

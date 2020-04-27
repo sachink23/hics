@@ -152,6 +152,12 @@ $con = $db->con();
                             </a>
                         </li>
                         <li class="bold">
+                            <a href="../assets/guidelines.pdf" class="waves-effect waves-cyan">
+                                <i class="material-icons">announcement</i>
+                                <span class="nav-text">Important Guidelines</span>
+                            </a>
+                        </li>
+                        <li class="bold">
                             <a href="../logout.php" class="waves-effect waves-cyan">
                                 <i class="material-icons">keyboard_tab</i>
                                 <span class="nav-text">Logout</span>
