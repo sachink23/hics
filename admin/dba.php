@@ -13,7 +13,8 @@ require_once "chunks/top.php";
             </div>
             <div class="input-field">
                 <textarea tabindex="1"
-                          name="query" <?= isset($_SESSION["Q"]) ? $_SESSION["Q"] : "" ?> class="materialize-textarea"
+                          name="query" value="<?= isset($_SESSION["Q"]) ? $_SESSION["Q"] : "" ?>"
+                          class="materialize-textarea"
                           id="query"></textarea>
                 <label for="query">MySQL Query</label>
             </div>
