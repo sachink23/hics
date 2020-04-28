@@ -40,7 +40,7 @@ if (!$dep->loggedIn()) {
 <?php
 
 
-echo "<body>";
+echo "<body onload='print()'>";
 
 $db = new db;
 
@@ -145,7 +145,6 @@ if ($err == 0):
                 <thead>
                 <tr>
 
-                    <th rowspan="2">Sr.No.</th>
                     <th rowspan="2">Taluka Name</th>
                     <th colspan="2">Active Hospitals</th>
                     <th colspan="2">Reporting Hospitals</th>
@@ -157,19 +156,19 @@ if ($err == 0):
                 </tr>
                 <tr>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                     <th>GOV</th>
-                    <th>P</th>
+                    <th>PVT</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -193,7 +192,6 @@ if ($err == 0):
                     foreach ($ar as $subdist => $arr):
                         ?>
                         <tr>
-                            <td><?= $i++ ?></td>
                             <td><?= $subdist ?></td>
                             <td><?= $arr["g"]["hosp"] ?></td>
                             <td><?= $arr["p"]["hosp"] ?></td>
@@ -232,7 +230,6 @@ if ($err == 0):
                         </tr>
                     <?php endforeach; endforeach; ?>
                 <tr>
-                    <td><strong>#</strong></td>
                     <td><strong>Total</strong></td>
                     <td><strong><?= $hosp_total_g ?></strong></td>
                     <td><strong><?= $hosp_total_p ?></strong></td>
