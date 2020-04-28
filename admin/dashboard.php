@@ -22,15 +22,6 @@ try {
     $tmp = $q->fetchAll(PDO::FETCH_ASSOC)[0];
     $no_opd = is_numeric($tmp["total_opd"]) ? $tmp["total_opd"] : 0;
     $no_covid = is_numeric($tmp["total_covid"]) ? $tmp["total_covid"] : 0;
-    /*$q = $con->query("
-            select sum(t1.no_ipd) as no_ipd from (select hospital_id, max(rp_date) AS rpdate
-            from  reporting
-            group by hospital_id) t2
-            join reporting t1 on t2.hospital_id = t1.hospital_id
-            and t2.rpdate = t1.rp_date
-        ");
-        $tmp = $q->fetchAll(PDO::FETCH_ASSOC)[0];
-*/
     $subdists =
         [
             "Parbhani (City)" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
@@ -58,15 +49,7 @@ try {
         $subdists[$subdist]["no_opd"] = is_numeric($tmp["total_opd"]) ? $tmp["total_opd"] : 0;
         $subdists[$subdist]["no_cov"] = is_numeric($tmp["total_covid"]) ? $tmp["total_covid"] : 0;
         $subdists[$subdist]["no_surgeries"] = is_numeric($tmp["total_surg"]) ? $tmp["total_surg"] : 0;
-        /*$q = $con->prepare("
-                select sum(t1.no_ipd) as no_ipd 
-                from (select r.hospital_id, max(rp_date) AS rpdate from (reporting r join hospitals h on r.hospital_id = h.hospital_id) WHERE h.subdist = ? and r.rp_date between ? and ? group by hospital_id) t2
-                join reporting t1 on t2.hospital_id = t1.hospital_id
-                and t2.rpdate = t1.rp_date                
-            ");
-        $q->execute([$subdist, $rf, $rt]);
-        $tmp = $q->fetchAll(PDO::FETCH_ASSOC)[0];
-        $subdists[$subdist]["no_ipd"] = is_numeric($tmp["no_ipd"]) ? $tmp["no_ipd"] : 0;*/
+
     }
 
 } catch (PDOException $e) {

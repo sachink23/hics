@@ -56,6 +56,24 @@ require_once "chunks/top.php";
             </div>
         </form>
     </div>
+    <br/>
+    <div class="container white z-depth-1">
+        <form target="_blank" action="masterReport.php" style="margin: 10px">
+            <div class="row">
+                <div class="col s12">
+                    <p><strong>Master Report</strong></p>
+                </div>
+                <div class="col s6">
+                    <label for="mst_date">Report Date</label>
+                    <input type="date" required name="mst_date" id="mst_date">
+                </div>
+                <div class="col s12" style="margin-bottom: 10px;">
+                    <button type="submit" class="btn waves-effect indigo right">Generate Master Reports</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
     <script>
         document.getElementById("reports_from").value = "<?= $rf ?>";
         document.getElementById("reports_to").value = "<?= $rt ?>";
