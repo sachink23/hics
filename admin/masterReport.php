@@ -140,7 +140,7 @@ if ($err == 0):
         <h5 class="text-center">Taluka Wise Report <?= date("d/m/Y", strtotime($d)) ?></h5>
         <hr/>
 
-        <div style="overflow-y: scroll">
+        <div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -153,9 +153,7 @@ if ($err == 0):
                     <th colspan="2">Total OPDs</th>
                     <th colspan="2">IPDs(Remaining)</th>
                     <th colspan="2">Surgeries /Deliveries</th>
-                    <th colspan="2" title="Patients Referred to District Covid Facility">Total Patients Referred to
-                        District Covid Facility
-                    </th>
+                    <th colspan="2">Referred to Covid Facility</th>
                 </tr>
                 <tr>
                     <th>GOV</th>
