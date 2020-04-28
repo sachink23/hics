@@ -33,7 +33,7 @@ class hospital
                 $this->user = $users[0];
                 return true;
             } else {
-                pageInfo("red", "Your Account Is Not Active! Contact Office");
+                pageInfo("orange", "Your Account Is Not Active yet! Please wait while we verify your details");
                 return false;
             }
         } else {
