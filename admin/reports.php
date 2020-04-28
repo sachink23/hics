@@ -11,7 +11,7 @@ require_once "chunks/top.php";
         <form action="loadReports.php" method="post" onsubmit="return checkDates()" style="margin: 10px">
             <div class="row">
                 <div class="col s12">
-                    <p><strong>Select Report Range (Dates)</strong></p>
+                    <p><strong>Reported Entries</strong></p>
                 </div>
                 <div class="col s6">
                     <label for="reports_from">From</label>

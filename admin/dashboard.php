@@ -135,11 +135,110 @@ if ($err == 0):
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
     <div style="margin: 10px;">
+        <div class="row z-depth-1" style="padding: 5px">
+            <?php
+            if (isset($_GET["rp_date_1"]))
+                $d = $_GET["rp_date_1"];
+            else
+                $d = date("Y-m-d");
+            $z = 0;
+            $stmt = "SELECT count(*) as total_reporting, sum(no_opd) as total_opd, sum(no_cov) as total_covid,  sum(occupied_beds) as total_occ_beds FROM reporting WHERE rp_date = ?";
+            try {
+                $q = $con->prepare($stmt);
+                $q->execute([$d]);
+                $reporting = $q->fetchAll(PDO::FETCH_ASSOC)[0];
+                $q = $con->query("SELECT sum(no_of_beds) as total_beds FROM hospitals WHERE ac_status = 'ACTIVE'");
 
+                $reporting["total_beds"] = $q->fetchAll(PDO::FETCH_ASSOC)[0]["total_beds"];
+            } catch (PDOException $e) {
+                echo "<script>alert('Database Error')</script>";
+                $z++;
+            }
+
+            ?>
+
+            <?php if ($z == 0): ?>
+                <div class="col s12">
+                    <form action="" class="row">
+                        <div class="container">
+                            <label for="rp_date_1" class="black-text"><strong>Performance Statistics (<?= $d ?>
+                                    )</strong></label>
+                            <input type="date" value="<?= $d ?>" class="validate" required name="rp_date_1"
+                                   id="rp_date_1">
+
+                        </div>
+                        <div class="container">
+                            <button type="submit" class="btn waves-effect indigo right">Submit</button>
+                        </div>
+                    </form>
+                    <div class="row mt-1">
+                        <div style="cursor: pointer"
+                             onclick="window.location.href = 'non_reporting_hospitals.php?r=1&d=<?= $d ?>'"
+                             class="col s12 m6 l3">
+                            <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <p>Reporting Hospitals</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h5><?= $reporting["total_reporting"] ?></h5>
+                                        <p class="no-margin">Total</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="cursor: pointer"
+                             onclick="window.location.href = 'non_reporting_hospitals.php?r=0&d=<?= $d ?>'"
+                             class="col s12 m6 l3">
+                            <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <p>Non Reporting Hospitals</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h5><?= $no_act_hosp - $reporting["total_reporting"] ?></h5>
+                                        <p class="no-margin">Total</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m6 l3">
+                            <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <p>Total OPD</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h5><?= is_numeric($reporting["total_opd"]) ? $reporting["total_opd"] : 0 ?></h5>
+                                        <p class="no-margin">Total</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l3">
+                            <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <p>Total Covid Reported</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h5><?= is_numeric($reporting["total_covid"]) ? $reporting["total_covid"] : 0 ?></h5>
+                                        <p class="no-margin">Total</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <br/>
         <div class="row z-depth-1" style="padding: 5px">
             <div class="col s12">
                 <h5 class="center">Taluka Wise Report</h5>
@@ -165,22 +264,22 @@ if ($err == 0):
                     </div>
                 </form>
                 <div style="overflow-y: scroll">
-                    <table class="centered highlight">
+                    <table class="centered highlight dataTable">
                         <thead>
                         <tr>
                             <th>Sr. <br/>No.</th>
                             <th>Taluka Name</th>
-                            <th>Active Hospitals<br/> <small>(No effect of Date)</small></th>
+                            <th>Active Hospitals</th>
                             <th>Total OPDs</th>
                             <th>IPDs <br>(Remaining)</th>
                             <th>Surgeries /<br/>Deliveries</th>
                             <th title="Patients Referred to District Covid Facility">Total Patients <br/>Referred to
                                 District<br/> Covid Facility
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
                     $hosp_total = 0;
                     $opd_total = 0;
                     $ipd_total = 0;
