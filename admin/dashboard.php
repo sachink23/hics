@@ -1,5 +1,5 @@
 <?php
-$title = "Admin Dashboard";
+$title = "HICS Reporting Dashboard";
 $rf = "2020-04-15";
 $rt = date("Y-m-d");
 if (isset($_GET["reports_from"]) && isset($_GET["reports_to"])) {
