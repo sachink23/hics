@@ -40,7 +40,7 @@ if (!$dep->loggedIn()) {
 <?php
 
 
-echo "<body onload='print()'>";
+echo "<body>";
 
 $db = new db;
 
