@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 $title = "HICS Reporting Dashboard";
 $rf = "2020-04-15";
 $rt = date("Y-m-d");
