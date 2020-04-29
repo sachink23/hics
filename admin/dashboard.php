@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $title = "HICS Reporting Dashboard";
 $rf = "2020-04-15";
 $rt = date("Y-m-d");
@@ -24,22 +27,34 @@ try {
     $no_covid = is_numeric($tmp["total_covid"]) ? $tmp["total_covid"] : 0;
     $subdists =
         [
-            "Parbhani (City)" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Parbhani" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Jintur" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Pathri" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Manwath" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Purna" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Selu" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Sonpeth" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Palam" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
-            "Gangakhed" => ["hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0]
+            "Parbhani (City)" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Parbhani" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Jintur" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Pathri" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Manwath" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Purna" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Selu" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Sonpeth" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Palam" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0],
+            "Gangakhed" => ["all" => [], "hosp" => 0, "no_opd" => 0, "no_cov" => 0, "no_ipd" => 0, "no_surgeries" => 0]
 
         ];
     foreach ($subdists as $subdist => $arr) {
-        $q = $con->prepare("SELECT count(*) as hosp_count, sum(ipd_rem) as ipd  FROM hospitals WHERE ac_status = 'active' AND subdist = ?");
+        $q = $con->prepare("SELECT hospital_name as h_name,
+                    no_of_docs as docs,
+                    no_of_beds as beds, 
+                    no_of_wards as wards,
+                    no_of_ppe as ppe,
+                    no_of_ambs as ambs,
+                    no_of_nurses as nurses,
+                    no_of_o2_conc as o2_cons,   
+                    no_of_o2_cel as o2_cels,
+                    no_of_monitors as mon,
+                    no_of_vents as vents,
+                    no_of_nebs as nebs, count(*) as hosp_count, sum(ipd_rem) as ipd  FROM hospitals WHERE ac_status = 'active' AND subdist = ?");
         $q->execute([$subdist]);
         $tmp = $q->fetchAll(PDO::FETCH_ASSOC)[0];
+        $subdists[$subdist]["all"] = $tmp;
         $subdists[$subdist]["hosp"] = $tmp["hosp_count"];
         $subdists[$subdist]["no_ipd"] = is_numeric($tmp["ipd"]) ? $tmp["ipd"] : 0;
 
@@ -224,6 +239,83 @@ if ($err == 0):
         <br/>
         <div class="row z-depth-1" style="padding: 5px">
             <div class="col s12">
+                <h5 class="center">Taluka Wise Resources Available</h5>
+                <hr/>
+                <div style="overflow-y: scroll">
+                    <table class="centered highlight dataTable">
+                        <thead>
+                        <tr>
+                            <th>Taluka Name</th>
+                            <th>Doctors</th>
+                            <th>Beds</th>
+                            <th>Wards</th>
+                            <th>Nurses</th>
+                            <th>Ambulances</th>
+                            <th>PPE</th>
+                            <th>Ventilators</th>
+                            <th>O<sub>2</sub> Cylinders</th>
+                            <th>O<sub>2</sub> Concentrators</th>
+                            <th>Monitors</th>
+                            <th>Nebulizers</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $i = 0;
+                        $t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                        foreach ($subdists as $subdist => $arr):
+
+                            $h = $arr["all"];
+                            ?>
+                            <tr>
+                                <td><?= $subdist ?></td>
+                                <td><?= $h["docs"] ?? 0 ?></td>
+                                <td><?= $h["beds"] ?? 0 ?></td>
+                                <td><?= $h["wards"] ?? 0 ?></td>
+                                <td><?= $h["nurses"] ?? 0 ?></td>
+                                <td><?= $h["ambs"] ?? 0 ?></td>
+                                <td><?= $h["ppe"] ?? 0 ?></td>
+                                <td><?= $h["vents"] ?? 0 ?></td>
+                                <td><?= $h["o2_cons"] ?? 0 ?></td>
+                                <td><?= $h["o2_cels"] ?? 0 ?></td>
+                                <td><?= $h["mon"] ?? 0 ?></td>
+                                <td><?= $h["nebs"] ?? 0 ?></td>
+                            </tr>
+                            <?php
+                            $t[0] += $h["docs"] ?? 0;
+                            $t[1] += $h["beds"] ?? 0;
+                            $t[2] += $h["wards"] ?? 0;
+                            $t[3] += $h["nurses"] ?? 0;
+                            $t[4] += $h["ambs"] ?? 0;
+                            $t[5] += $h["ppe"] ?? 0;
+                            $t[6] += $h["vents"] ?? 0;
+                            $t[7] += $h["o2_cons"] ?? 0;
+                            $t[8] += $h["o2_cels"] ?? 0;
+                            $t[9] += $h["mon"] ?? 0;
+                            $t[10] += $h["nebs"] ?? 0;
+                        endforeach; ?>
+                        <tr>
+                            <td>Total</td>
+                            <td><?= $t[0] ?></td>
+                            <td><?= $t[1] ?></td>
+                            <td><?= $t[2] ?></td>
+                            <td><?= $t[3] ?></td>
+                            <td><?= $t[4] ?></td>
+                            <td><?= $t[5] ?></td>
+                            <td><?= $t[6] ?></td>
+                            <td><?= $t[7] ?></td>
+                            <td><?= $t[8] ?></td>
+                            <td><?= $t[9] ?></td>
+                            <td><?= $t[10] ?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row z-depth-1" style="padding: 5px">
+            <div class="col s12">
                 <h5 class="center">Taluka Wise Report</h5>
                 <hr/>
 
@@ -263,40 +355,40 @@ if ($err == 0):
                         </thead>
                         <tbody>
                         <?php
-                    $hosp_total = 0;
-                    $opd_total = 0;
-                    $ipd_total = 0;
-                    $total_surgeries = 0;
-                    $total_cov = 0;
-                    $i = 1;
-                    foreach ($subdists as $subdist => $arr): ?>
+                        $hosp_total = 0;
+                        $opd_total = 0;
+                        $ipd_total = 0;
+                        $total_surgeries = 0;
+                        $total_cov = 0;
+                        $i = 1;
+                        foreach ($subdists as $subdist => $arr): ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $subdist ?></td>
+                                <td><?= $arr["hosp"] ?></td>
+                                <td><?= $arr["no_opd"] ?></td>
+                                <td><?= $arr["no_ipd"] ?></td>
+                                <td><?= $arr["no_surgeries"] ?></td>
+                                <td><?= $arr["no_cov"] ?></td>
+                                <?php
+                                $hosp_total += $arr["hosp"];
+                                $opd_total += $arr["no_opd"];
+                                $ipd_total += $arr["no_ipd"];
+                                $total_surgeries += $arr["no_surgeries"];
+                                $total_cov += $arr["no_cov"];
+                                ?>
+                            </tr>
+                        <?php endforeach; ?>
                         <tr>
-                            <td><?= $i++ ?></td>
-                            <td><?= $subdist ?></td>
-                            <td><?= $arr["hosp"] ?></td>
-                            <td><?= $arr["no_opd"] ?></td>
-                            <td><?= $arr["no_ipd"] ?></td>
-                            <td><?= $arr["no_surgeries"] ?></td>
-                            <td><?= $arr["no_cov"] ?></td>
-                            <?php
-                            $hosp_total += $arr["hosp"];
-                            $opd_total += $arr["no_opd"];
-                            $ipd_total += $arr["no_ipd"];
-                            $total_surgeries += $arr["no_surgeries"];
-                            $total_cov += $arr["no_cov"];
-                            ?>
+                            <td><strong>#</strong></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong><?= $hosp_total ?></strong></td>
+                            <td><strong><?= $opd_total ?></strong></td>
+                            <td><strong><?= $ipd_total ?></strong></td>
+                            <td><strong><?= $total_surgeries ?></strong></td>
+                            <td><strong><?= $total_cov ?></strong></td>
                         </tr>
-                    <?php endforeach; ?>
-                    <tr>
-                        <td><strong>#</strong></td>
-                        <td><strong>Total</strong></td>
-                        <td><strong><?= $hosp_total ?></strong></td>
-                        <td><strong><?= $opd_total ?></strong></td>
-                        <td><strong><?= $ipd_total ?></strong></td>
-                        <td><strong><?= $total_surgeries ?></strong></td>
-                        <td><strong><?= $total_cov ?></strong></td>
-                    </tr>
-                    </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
