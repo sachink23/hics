@@ -59,7 +59,7 @@ if (
                             no_of_ambs = ?,
                             no_of_ppe = ?,
                             no_of_vents = ?,
-                            no_of_o2_conc = ?,
+                            no_of_o2_cel = ?,
                             no_of_o2_conc = ?,
                             no_of_monitors = ?,
                             no_of_nebs = ?
