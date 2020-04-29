@@ -38,17 +38,17 @@ try {
         ];
     foreach ($subdists as $subdist => $arr) {
         $q = $con->prepare("SELECT hospital_name as h_name,
-                    no_of_docs as docs,
-                    no_of_beds as beds, 
-                    no_of_wards as wards,
-                    no_of_ppe as ppe,
-                    no_of_ambs as ambs,
-                    no_of_nurses as nurses,
-                    no_of_o2_conc as o2_cons,   
-                    no_of_o2_cel as o2_cels,
-                    no_of_monitors as mon,
-                    no_of_vents as vents,
-                    no_of_nebs as nebs, count(*) as hosp_count, sum(ipd_rem) as ipd  FROM hospitals WHERE ac_status = 'active' AND subdist = ?");
+                    sum(no_of_docs) as docs,
+                    sum(no_of_beds) as beds, 
+                    sum(no_of_wards) as wards,
+                    sum(no_of_ppe) as ppe,
+                    sum(no_of_ambs) as ambs,
+                    sum(no_of_nurses) as nurses,
+                    sum(no_of_o2_conc) as o2_cons,   
+                    sum(no_of_o2_cel) as o2_cels,
+                    sum(no_of_monitors) as mon,
+                    sum(no_of_vents) as vents,
+                    sum(no_of_nebs) as nebs, count(*) as hosp_count, sum(ipd_rem) as ipd  FROM hospitals WHERE ac_status = 'active' AND subdist = ?");
         $q->execute([$subdist]);
         $tmp = $q->fetchAll(PDO::FETCH_ASSOC)[0];
         $subdists[$subdist]["all"] = $tmp;
