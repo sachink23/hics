@@ -273,7 +273,7 @@ if ($err == 0):
                                 <td><?= is_numeric($h["ambs"]) ? $h["ambs"] : 0 ?></td>
                                 <td><?= is_numeric($h["ppe"]) ? $h["ppe"] : 0 ?></td>
                                 <td><?= is_numeric($h["vents"]) ? $h["vents"] : 0 ?></td>
-                                <td><?= is_numeric($h["o2_conc"]) ? $h["o2_conc"] : 0 ?></td>
+                                <td><?= is_numeric($h["o2_cons"]) ? $h["o2_cons"] : 0 ?></td>
                                 <td><?= is_numeric($h["o2_cels"]) ? $h["o2_cels"] : 0 ?></td>
                                 <td><?= is_numeric($h["mon"]) ? $h["mon"] : 0 ?></td>
                                 <td><?= is_numeric($h["nebs"]) ? $h["nebs"] : 0 ?></td>
