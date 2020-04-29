@@ -291,6 +291,9 @@ if ($err == 0):
                             $t[9] += is_numeric($h["mon"]) ? $h["mon"] : 0;
                             $t[10] += is_numeric($h["nebs"]) ? $h["nebs"] : 0;
                         endforeach; ?>
+                            
+                        </tbody>
+                        <tfoot>
                         <tr>
                             <td>Total</td>
                             <td><?= $t[0] ?></td>
@@ -305,7 +308,7 @@ if ($err == 0):
                             <td><?= $t[9] ?></td>
                             <td><?= $t[10] ?></td>
                         </tr>
-                        </tbody>
+                        </tfoot>
                     </table>
                 </div>
             </div>
