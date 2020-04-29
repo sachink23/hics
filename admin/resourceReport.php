@@ -120,6 +120,8 @@ if ($i == 0):
         }
     </style>
     <br/>
+    <h5 class="center"><?= $title ?></h5>
+    <br/>
     <table class="highlight centered dataTable">
         <thead>
         <tr>
@@ -172,8 +174,8 @@ if ($i == 0):
         endforeach;
         ?>
         <tr>
-            <td></td>
             <td>Total</td>
+            <td>Hospitals : <?= $i ?></td>
             <td><?= $t[0] ?></td>
             <td><?= $t[1] ?></td>
             <td><?= $t[2] ?></td>
