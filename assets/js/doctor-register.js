@@ -124,7 +124,7 @@ function registerFormSubmit() {
                 if (data.error == "false") {
                     Swal.fire({
                         title: `Registration Successful!`,
-                        text: `Hospital Registration Successful, You Will Be Able To Login After Your Request Is Approved`,
+                        text: `Registration of your hospital is completed successfully. You will receive the login and password on given mobile number in next 24 hours if approved by competent authority. Use that login and password for daily reporting. Please refer instructions for daily reporting. Thank you.`,
                         icon: `success`
                     });
                     registerFormReset();
