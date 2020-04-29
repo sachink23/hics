@@ -23,6 +23,7 @@ try {
         $q = $con->query("
                 SELECT 
                     hospital_name as h_name,
+                    subdist,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
@@ -45,6 +46,7 @@ try {
         $q = $con->prepare("
                 SELECT 
                     hospital_name as h_name,
+                    subdist,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
@@ -67,6 +69,7 @@ try {
         $q = $con->prepare("
                 SELECT 
                     hospital_name as h_name,
+                    subdist,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
