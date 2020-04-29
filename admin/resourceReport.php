@@ -182,7 +182,8 @@ if ($i == 0):
         ?>
         <tr>
             <td>Total</td>
-            <td>Hospitals : <?= $i ?></td>
+            <td>Hospitals</td>
+            <td><?= $i ?></td>
             <td><?= $t[0] ?></td>
             <td><?= $t[1] ?></td>
             <td><?= $t[2] ?></td>
