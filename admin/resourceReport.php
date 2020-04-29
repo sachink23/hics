@@ -160,8 +160,9 @@ if ($i == 0):
                 <td><?= $h["ambs"] ?></td>
                 <td><?= $h["ppe"] ?></td>
                 <td><?= $h["vents"] ?></td>
-                <td><?= $h["o2_cons"] ?></td>
                 <td><?= $h["o2_cels"] ?></td>
+
+                <td><?= $h["o2_cons"] ?></td>
                 <td><?= $h["mon"] ?></td>
                 <td><?= $h["nebs"] ?></td>
             </tr>
@@ -173,8 +174,8 @@ if ($i == 0):
             $t[4] += $h["ambs"];
             $t[5] += $h["ppe"];
             $t[6] += $h["vents"];
-            $t[7] += $h["o2_cons"];
-            $t[8] += $h["o2_cels"];
+            $t[8] += $h["o2_cons"];
+            $t[7] += $h["o2_cels"];
             $t[9] += $h["mon"];
             $t[10] += $h["nebs"];
         endforeach;
