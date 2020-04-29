@@ -243,6 +243,7 @@ if ($err == 0):
                         <thead>
                         <tr>
                             <th>Taluka Name</th>
+                            <th>Hospitals</th>
                             <th>Doctors</th>
                             <th>Beds</th>
                             <th>Wards</th>
@@ -266,19 +267,21 @@ if ($err == 0):
                             ?>
                             <tr>
                                 <td><?= $subdist ?></td>
+                                <td><?= is_numeric($arr["hosp"]) ? $arr["hosp"] : 0 ?></td>
                                 <td><?= is_numeric($h["docs"]) ? $h["docs"] : 0 ?></td>
                                 <td><?= is_numeric($h["beds"]) ? $h["beds"] : 0 ?></td>
                                 <td><?= is_numeric($h["wards"]) ? $h["wards"] : 0 ?></td>
-                                <td><?= is_numeric($h["nurses"]) ? $h["nurses"] : 0?></td>
+                                <td><?= is_numeric($h["nurses"]) ? $h["nurses"] : 0 ?></td>
                                 <td><?= is_numeric($h["ambs"]) ? $h["ambs"] : 0 ?></td>
                                 <td><?= is_numeric($h["ppe"]) ? $h["ppe"] : 0 ?></td>
                                 <td><?= is_numeric($h["vents"]) ? $h["vents"] : 0 ?></td>
-                                <td><?= is_numeric($h["o2_cels"]) ? $h["o2_cels"] : 0 ?></td>                               
+                                <td><?= is_numeric($h["o2_cels"]) ? $h["o2_cels"] : 0 ?></td>
                                 <td><?= is_numeric($h["o2_cons"]) ? $h["o2_cons"] : 0 ?></td>
                                 <td><?= is_numeric($h["mon"]) ? $h["mon"] : 0 ?></td>
                                 <td><?= is_numeric($h["nebs"]) ? $h["nebs"] : 0 ?></td>
                             </tr>
                             <?php
+                            $t[11] += is_numeric($arr["hosp"]) ? $arr["hosp"] : 0;
                             $t[0] += is_numeric($h["docs"]) ? $h["docs"] : 0;
                             $t[1] += is_numeric($h["beds"]) ? $h["beds"] : 0;
                             $t[2] += is_numeric($h["wards"]) ? $h["wards"] : 0;
@@ -291,11 +294,10 @@ if ($err == 0):
                             $t[9] += is_numeric($h["mon"]) ? $h["mon"] : 0;
                             $t[10] += is_numeric($h["nebs"]) ? $h["nebs"] : 0;
                         endforeach; ?>
-                            
-                        </tbody>
-                        <tfoot>
+
                         <tr>
                             <td>Total</td>
+                            <td><?= $t[11] ?></td>
                             <td><?= $t[0] ?></td>
                             <td><?= $t[1] ?></td>
                             <td><?= $t[2] ?></td>
@@ -308,7 +310,7 @@ if ($err == 0):
                             <td><?= $t[9] ?></td>
                             <td><?= $t[10] ?></td>
                         </tr>
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
             </div>
