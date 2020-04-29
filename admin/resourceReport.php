@@ -34,7 +34,7 @@ try {
                     no_of_monitors as mon,
                     no_of_vents as vents,
                     no_of_nebs as nebs   
-                FROM hospitals
+                FROM hospitals where ac_status = 'active'
                 "
         );
         $hosps = $q->fetchAll(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ try {
                     no_of_vents as vents,
                     no_of_nebs as nebs   
                 FROM hospitals 
-                WHERE cat = ?
+                WHERE cat = ? and ac_status = 'active'
                 "
         );
         $q->execute([$_GET["hosp_cat"]]);
@@ -101,7 +101,7 @@ try {
                     no_of_vents as vents,
                     no_of_nebs as nebs   
                 FROM hospitals 
-                WHERE subdist = ? and cat = ?
+                WHERE subdist = ? and cat = ? and ac_status = 'active'
                 "
         );
         $q->execute([$_GET["subdist_"], $_GET["hosp_cat"]]);
