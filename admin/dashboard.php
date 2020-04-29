@@ -346,11 +346,9 @@ if ($err == 0):
                             <th>Taluka Name</th>
                             <th>Active Hospitals</th>
                             <th>Total OPDs</th>
-                            <th>IPDs <br>(Remaining)</th>
-                            <th>Surgeries /<br/>Deliveries</th>
-                            <th title="Patients Referred to District Covid Facility">Total Patients <br/>Referred to
-                                District<br/> Covid Facility
-                            </th>
+                            <th>IPDs (Remaining)</th>
+                            <th>Surgeries Deliveries</th>
+                            <th>Covid Referred</th>
                         </tr>
                         </thead>
                         <tbody>
