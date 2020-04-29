@@ -57,6 +57,45 @@ require_once "chunks/top.php";
         </form>
     </div>
     <br/>
+
+    <div class="container white z-depth-1">
+        <form target="_blank" action="resourceReport.php" style="margin: 10px">
+            <div class="row">
+                <div class="col s12">
+                    <p><strong>Report of Available Resources</strong></p>
+                </div>
+                <div class="col s6">
+                    <label for="mst_date">Category</label>
+                    <select name="hosp_cat" id="hosp_cat">
+                        <option value="all">ALL</option>
+                        <option value="private">Private</option>
+                        <option value="government">Government</option>
+                    </select>
+                </div>
+                <div class="col s6">
+                    <label for="subdist_">Taluka</label>
+                    <select name="subdist_" id="subdist_" class="validate">
+                        <option value="ALL" selected>ALL</option>
+                        <option value="Parbhani (City)">Parbhani (City)</option>
+                        <option value="Parbhani">Parbhani</option>
+                        <option value="Jintur">Jintur</option>
+                        <option value="Pathri">Pathri</option>
+                        <option value="Manwath">Manwath</option>
+                        <option value="Purna">Purna</option>
+                        <option value="Selu">Selu</option>
+                        <option value="Sonpeth">Sonpeth</option>
+                        <option value="Palam">Palam</option>
+                        <option value="Gangakhed">Gangakhed</option>
+                    </select>
+                </div>
+                <div class="col s12" style="margin-bottom: 10px;">
+                    <button type="submit" class="btn waves-effect indigo right">Generate Resources Reports</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <br/>
     <div class="container white z-depth-1">
         <form target="_blank" action="masterReport.php" style="margin: 10px">
             <div class="row">
