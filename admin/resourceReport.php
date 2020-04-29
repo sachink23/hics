@@ -89,6 +89,7 @@ try {
         $q = $con->prepare("
                 SELECT 
                     hospital_name as h_name,
+                    subdist,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
@@ -127,6 +128,7 @@ if ($i == 0):
         <tr>
             <th>Sr</th>
             <th>Name of Hospital</th>
+            <th>Taluka</th>
             <th>Doctors</th>
             <th>Beds</th>
             <th>Wards</th>
@@ -147,6 +149,7 @@ if ($i == 0):
             <tr>
                 <td><?= ++$i ?></td>
                 <td><?= $h["h_name"] ?></td>
+                <td><?= $h["subdist"] ?></td>
                 <td><?= $h["docs"] ?></td>
                 <td><?= $h["beds"] ?></td>
                 <td><?= $h["wards"] ?></td>
