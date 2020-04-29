@@ -176,6 +176,8 @@ if ($i == 0):
             $t[10] += $h["nebs"];
         endforeach;
         ?>
+        </tbody>
+        <tfoot>
         <tr>
             <td>Total</td>
             <td>Hospitals : <?= $i ?></td>
@@ -191,7 +193,7 @@ if ($i == 0):
             <td><?= $t[9] ?></td>
             <td><?= $t[10] ?></td>
         </tr>
-        </tbody>
+        <tfoot>
     </table>
 <?php
 endif;
