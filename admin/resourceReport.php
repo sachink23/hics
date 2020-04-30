@@ -24,6 +24,7 @@ try {
                 SELECT 
                     hospital_name as h_name,
                     subdist,
+                    cat,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
@@ -47,6 +48,7 @@ try {
                 SELECT 
                     hospital_name as h_name,
                     subdist,
+                    cat,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
@@ -70,6 +72,7 @@ try {
                 SELECT 
                     hospital_name as h_name,
                     subdist,
+                    cat,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
@@ -93,6 +96,7 @@ try {
                 SELECT 
                     hospital_name as h_name,
                     subdist,
+                    cat,
                     no_of_docs as docs,
                     no_of_beds as beds, 
                     no_of_wards as wards,
