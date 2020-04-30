@@ -1,5 +1,5 @@
 <?php
-$title = "Admin Dashboard : Reports";
+$title = "Covid Referred Reports";
 require_once "chunks/top.php";
 $con = $db->con();
 $err = 0;
@@ -16,8 +16,7 @@ if ($err == 0):
     <div class="row" style="margin-top: 10px;">
         <div class="col s12 z-depth-3" style="margin-top: 10px; min-height: 400px">
             <div style="padding: 10px;  overflow-y: scroll">
-                <h5 class="teal-text">Reports : <?= date("d/m/Y", strtotime($rf)) ?>
-                    To <?= date("d/m/Y", strtotime($rt)) ?></h5>
+                <h5 class="teal-text">Covid Referred Reports</h5>
                 <table class="centered highlight dataTable" style="border: 1px solid black">
                     <thead>
                     <tr>
