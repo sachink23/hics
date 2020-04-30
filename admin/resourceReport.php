@@ -131,6 +131,7 @@ if ($i == 0):
         <tr>
             <th>Sr</th>
             <th>Name of Hospital</th>
+            <th>Category</th>
             <th>Taluka</th>
             <th>Doctors</th>
             <th>Beds</th>
@@ -152,6 +153,7 @@ if ($i == 0):
             <tr>
                 <td><?= ++$i ?></td>
                 <td><?= $h["h_name"] ?></td>
+                <td><?= ucwords($h["cat"]) ?></td>
                 <td><?= $h["subdist"] ?></td>
                 <td><?= $h["docs"] ?></td>
                 <td><?= $h["beds"] ?></td>
@@ -181,9 +183,10 @@ if ($i == 0):
         endforeach;
         ?>
         <tr>
-            <td>Total</td>
-            <td>Hospitals</td>
-            <td><?= $i ?></td>
+            <td>0</td>
+            <td>Total Hospitals <?= $i ?></td>
+            <td>-</td>
+            <td>-</td>
             <td><?= $t[0] ?></td>
             <td><?= $t[1] ?></td>
             <td><?= $t[2] ?></td>

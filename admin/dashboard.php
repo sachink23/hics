@@ -118,7 +118,8 @@ if ($err == 0):
             </div>
 
             <div class="col s12 m6 l3">
-                <div class="card gradient-45deg-amber-amber gradient-shadow min-height-100 white-text">
+                <div onclick="window.location.href = 'covRefReports.php'" style="cursor: pointer"
+                     class="card gradient-45deg-amber-amber gradient-shadow min-height-100 white-text">
                     <div class="padding-4">
                         <div class="col s7 m7">
                             <p class="mt-5">Patients Referred to District Covid Facility </p>
