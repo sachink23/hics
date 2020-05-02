@@ -40,9 +40,10 @@ try {
                     foreach ($new_requests as $req): ?>
                         <tr>
                             <td><?= $i++ ?></td>
-                            <td><?= ucwords($req["cat"]) ?></td>
                             <td><strong><?= $req["hospital_name"] ?></strong><br/>Dr. <?= $req["name_of_doctor"] ?></td>
-                            <td><?= $req["hospital_type"] ?></td>
+                            <td><?= ucwords($req["cat"]) ?></td>
+                            
+<td><?= $req["hospital_type"] ?></td>
                             <td><?= $req["mobile_number"] ?></td>
                             <td><?= $req["subdist"] ?></td>
                             <td><?= ucwords(strtolower($req["ac_status"])) ?></td>
